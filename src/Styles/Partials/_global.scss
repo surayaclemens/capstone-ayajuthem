@@ -1,0 +1,17 @@
+@use './typography' as *;
+@use './colors' as *;
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
