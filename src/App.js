@@ -10,13 +10,12 @@ class App extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <Header />
           <Switch>
             <Route path="/" exact component={HomeScreen} />
             {/* <Route path="/play" exact component={GameScreen} /> */}
             {/* <Route path="/route1:dynamic" exact component={} /> */}
           </Switch> 
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </div>
     );
