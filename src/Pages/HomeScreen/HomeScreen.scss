@@ -1,0 +1,21 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+.home{
+    background-color: $cta-pink;
+    color: white;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Aldrich';
+    padding: 3rem 0;
+    
+    &__instruction-block{
+    padding: 1rem 0;
+    }
+    
+    &__instruction-text{
+    
+    }
+
+}

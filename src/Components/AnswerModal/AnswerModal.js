@@ -4,7 +4,7 @@ import closeIcon from '../../Assets/cross.png';
 
 
 function AnswerModal( { hideModal, correctAnswer, showAnswerModal, answerMessage }) {
-    const modalDisplayClass = showAnswerModal ? 'answer-modal' : 'answer-modal--hide'
+    const modalDisplayClass = showAnswerModal ? "answer-modal--show" : "answer-modal--hide"
 
     
     return (  

@@ -7,8 +7,12 @@
     border: 2px solid limegreen;
     display: block;
 
+    &--show{
+        display: block;
+    }
+
     &--hide{
-        display: none;
+        // display: none;
     }
 
     &__close{
