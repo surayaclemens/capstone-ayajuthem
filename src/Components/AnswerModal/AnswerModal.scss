@@ -1,0 +1,26 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+
+.answer-modal{
+    border: 2px solid limegreen;
+    display: block;
+
+    &--hide{
+        display: none;
+    }
+
+    &__close{
+    
+    }
+    &__header{
+    
+    }
+    &__correct-answer{
+    
+    }
+    &__message{
+    
+    }
+}

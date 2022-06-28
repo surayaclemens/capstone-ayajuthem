@@ -1,0 +1,34 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+.main{
+    background-color: $background-green;
+    height: 100vh;
+
+    &__top-wrapper{
+        border: 1px solid  orange;
+
+    }
+    &__input-phrase{
+        border: 1px solid yellow;
+
+    }
+}
+            
+            
+.game{
+    border: 1px solid green;
+
+    &__image{
+        border: 1px solid blue;
+    }
+    &__fall-space{
+        border: 1px solid purple;
+        
+    }
+    &__output{
+        border: 1px solid palevioletred;
+        
+    }
+}

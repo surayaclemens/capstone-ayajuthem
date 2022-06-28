@@ -1,0 +1,9 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+.button {
+    @include buttonStyles;
+    background-color: $cta-green;
+    border: 1px solid white;
+}
