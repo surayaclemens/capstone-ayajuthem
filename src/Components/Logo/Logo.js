@@ -9,7 +9,6 @@ class Logo extends React.Component{
                 <div className='logo__circle'>
                     <img className='logo__image' src={logoImage} alt='logo'/>
                 </div>
-                {/* <h1 className='logo__text'>Ayajuthem Tetris</h1> */}
             </main>
         )
     }

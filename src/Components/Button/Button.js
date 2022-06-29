@@ -1,11 +1,11 @@
 import './Button.scss';
 import React from 'react';
 
-function Button ({buttonText, showModal}) {
+function Button ({buttonText, handler}) {
         return(
             <button 
                 className='button'
-                onClick={showModal}
+                onClick={handler}
                 >
                 {buttonText}
             </button>

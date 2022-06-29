@@ -20,7 +20,7 @@ class GameScreen extends React.Component{
         userAnswerCorrect: false
     }
 // pulling data in from backend to fill initial mount
-    dataURL = 'http://localhost:8080/';
+    // dataURL = 'http://localhost:8080/';
     // componentDidMount(){
     //     axios.get(this.dataURL)
     //     .then(response => {
@@ -56,6 +56,11 @@ class GameScreen extends React.Component{
     render(){
         return (
             <main className='main'>
+                <AnswerModal 
+                    showAnswerModal={this.state.showAnswerModal}
+                    hideModal={this.hideModal}
+                    answerMessage={this.answerMessage} 
+                />
                 <div className='main__top-wrapper'>
                 <BackNav />
                 {/* <Timer /> */}
@@ -75,12 +80,8 @@ class GameScreen extends React.Component{
                 </div>
 
                {/* button onclick modal, function added as prop to button component */}
-                <Button buttonText="Check" onClick={this.showModal} />
-                <AnswerModal 
-                    showAnswerModal={this.state.showAnswerModal}
-                    hideModal={this.hideModal}
-                    answerMessage={this.answerMessage} 
-                />
+                <Button buttonText="Check" handler={this.showModal} />
+                
             </main>
         )
     }

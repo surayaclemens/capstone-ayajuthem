@@ -1,21 +1,40 @@
 @use '../../Styles/Partials/colors' as *;
 @use '../../Styles/Partials/global' as *;
 @use '../../Styles/Partials/mixins' as *;
+@use '../../Styles/Partials/animations' as *;
 
 .home{
-    background-color: $cta-pink;
+    background-color: $dark-blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     color: white;
     height: 100vh;
     margin: 0;
     font-family: 'Aldrich';
-    padding: 3rem 0;
     
     &__instruction-block{
-    padding: 1rem 0;
+        background-color: #F19173;
+        padding: 1rem 0;
+        width: 50rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        box-shadow: 3px 4px rgba(255, 221, 85, 0.825);
     }
     
     &__instruction-text{
-    
+        font-size: 1.75rem;
+        padding: 0 6rem;
+        margin: 1rem 0;
+    // separate each line of text into different modifier class, set timeout to add class staggered so each line gets typed separately
+
+ overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: typing 3.5s steps(50, end),
     }
 
 }
