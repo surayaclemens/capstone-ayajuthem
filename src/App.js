@@ -12,8 +12,8 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={HomeScreen} />
-            <Route path="/phrases/:id" component={GameScreen} />
-            {/* <Route path="/phrases:id" component={} /> */}
+            <Route path="/phrases" exact component={GameScreen} />
+            <Route path="/phrases:id" component={GameScreen} />
           </Switch> 
           {/* <Footer /> */}
         </BrowserRouter>

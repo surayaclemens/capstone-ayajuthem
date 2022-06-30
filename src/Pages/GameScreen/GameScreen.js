@@ -26,36 +26,34 @@ class GameScreen extends React.Component{
     componentDidMount(){
         phrasesAPI.getAll()
         .then(response => {
-            console.log(response.data)
+            // const firstPhrase = response.data[0];
+            const allPhrases = response.data;
             this.setState({
-                input: response.data[0],
-                allInputs: response.data
+
+                // input: firstPhrase,
+                allInputs: allPhrases
                 // image:
             })
+            this.getRandomPhrase(allPhrases)
         })
         .catch(error => console.error(error))
     }
 
-// UPDATE COMPONENT WHEN CHANGING PHRASE/DYNAMIC URL
-    // for when each phrase is url with id, make it so if the current phraseId is different from the last one, get the info for the current one
+// RANDOMIZER 
+    getRandomPhrase = (array) => {
+        console.log(array)
+            const randomPhrase = Math.floor(Math.random() * array.length);
+            this.setState({
+                input:array[randomPhrase]
+            })
+            // console.log(randomPhrase)
+    }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     const currentPhraseId = this.props.match.params.phraseId;
-    //     const previousPhraseId = prevProps.match.params.phraseId;
+    shufflePhrases(array){
+        return array.sort(() => Math.random()-0.5)
+    }
 
-    //     if (currentPhraseId !== previousPhraseId){
-    //         phrasesAPI.getOne(currentPhraseId)
-    //             .then(response => {
-    //                 this.setState({
-    //                     input: response.data
-    //                 })
-    //             })
-    //     }
-    // }
-
-
-    // FUNCTIONS FOR MODAL
-    
+// FUNCTIONS FOR MODAL
     showModal = () => {
         this.setState({
             showAnswerModal: true
@@ -67,19 +65,24 @@ class GameScreen extends React.Component{
             showAnswerModal: false
         })
     }
-    
-    answerMessage = () => {
-        // if user output == answer -> display correct message, else display incorrect
-        console.log('write this function later');
+
+// FUNCTION TO GET NEW RANDOM PHRASE ON NEXT CLICK
+    handleNext = () => {
+        this.getRandomPhrase(this.state.allInputs);
+        this.setState({
+            // input: nextRandomPhrase,
+            showAnswerModal: false
+        })
+
+        this.shufflePhrases(this.state.allInputs)
     }
-
-//    UPDATE TO NEW INPUT
-// componentDidUpdate(){
-
-// }
     
+    // answerMessage = () => {
+    //     // if user output == answer -> display correct message, else display incorrect
+    //     console.log('write this function later');
+    // }
+
     
-    // putting in jsx holders for input phrase passed in, next morphemes list
     render(){
         return (
             <main className='main'>
@@ -87,6 +90,7 @@ class GameScreen extends React.Component{
                     showAnswerModal={this.state.showAnswerModal}
                     hideModal={this.hideModal}
                     answerMessage={this.answerMessage} 
+                    handleNext={this.handleNext}
                 />
 
                 <div className='main__top-wrapper'>
@@ -117,3 +121,21 @@ class GameScreen extends React.Component{
 }
 
 export default GameScreen;
+
+
+// UPDATE COMPONENT WHEN CHANGING PHRASE/DYNAMIC URL
+// for when each phrase is url with id, make it so if the current phraseId is different from the last one, get the info for the current one
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     const currentPhraseId = this.props.match.params.phraseId;
+    //     const previousPhraseId = prevProps.match.params.phraseId;
+
+    //     if (currentPhraseId !== previousPhraseId){
+    //         phrasesAPI.getOne(currentPhraseId)
+    //             .then(response => {
+    //                 this.setState({
+    //                     input: response.data
+    //                 })
+    //             })
+    //     }
+    // }

@@ -16,7 +16,7 @@ class HomeScreen extends React.Component{
                     <p className='home__instruction-text home__instruction-text--second'>Use arrow keys to move each block into place as it appears</p>
                     <p className='home__instruction-text home__instruction-text--third'>Beat the clock!</p>
                 </section>
-                <NavLink to='/phrases/1'><Button buttonText="Start"/></NavLink>
+                <NavLink to='/phrases'><Button buttonText="Start"/></NavLink>
             </main>
         )
     }
