@@ -12,11 +12,11 @@ class HomeScreen extends React.Component{
             <main className='home'>
                 <Logo />
                 <section className='home__instruction-block'>
-                    <p className='home__instruction-text'>Arrange the word blocks to match the target sentence</p>
-                    <p className='home__instruction-text'>Use arrow keys to move each block into place as it appears</p>
-                    <p className='home__instruction-text'>Beat the clock!</p>
+                    <p className='home__instruction-text home__instruction-text--first'>Arrange the word blocks to match the target sentence</p>
+                    <p className='home__instruction-text home__instruction-text--second'>Use arrow keys to move each block into place as it appears</p>
+                    <p className='home__instruction-text home__instruction-text--third'>Beat the clock!</p>
                 </section>
-                <NavLink to='/play'><Button buttonText="Start"/></NavLink>
+                <NavLink to='/phrases/1'><Button buttonText="Start"/></NavLink>
             </main>
         )
     }

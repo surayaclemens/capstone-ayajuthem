@@ -3,36 +3,59 @@ import React from 'react';
 import Button from '../../Components/Button/Button';
 import BackNav from '../../Components/BackNav/BackNav';
 // import Timer from '../../Components/Timer/Timer';
-// import NextList from '../../Components/NextList/NextList';
+import NextList from '../../Components/NextList/NextList';
 import AnswerModal from '../../Components/AnswerModal/AnswerModal';
-// import InputPhrase from '../../Components/InputPhrase/InputPhrase';
-// import axios from 'axios';
+import InputPhrase from '../../Components/InputPhrase/InputPhrase';
 // import { NavLink } from 'react-router-dom';
 import dummyImage from '../../Assets/dummy.svg';
+import phrasesAPI from '../../utils/apiConfig';
 
 class GameScreen extends React.Component{
     state = {
-        input: "",
-        nextList: [],
+        input: {},
+        allInputs: [],
         image: null,
         output: [],
         showAnswerModal: false,
         userAnswerCorrect: false
     }
-// pulling data in from backend to fill initial mount
-    // dataURL = 'http://localhost:8080/';
-    // componentDidMount(){
-    //     axios.get(this.dataURL)
-    //     .then(response => {
-    //         this.setState({
-    //             input:,
-    //             nextList: ,
-    //             image:
-    //         })
-    //     })
-    //     .catch(error => console.error(error))
+
+// INITIAL MOUNT PULLING IN ALL DATA
+    dataURL = 'http://localhost:5050/phrases';
+
+    componentDidMount(){
+        phrasesAPI.getAll()
+        .then(response => {
+            console.log(response.data)
+            this.setState({
+                input: response.data[0],
+                allInputs: response.data
+                // image:
+            })
+        })
+        .catch(error => console.error(error))
+    }
+
+// UPDATE COMPONENT WHEN CHANGING PHRASE/DYNAMIC URL
+    // for when each phrase is url with id, make it so if the current phraseId is different from the last one, get the info for the current one
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     const currentPhraseId = this.props.match.params.phraseId;
+    //     const previousPhraseId = prevProps.match.params.phraseId;
+
+    //     if (currentPhraseId !== previousPhraseId){
+    //         phrasesAPI.getOne(currentPhraseId)
+    //             .then(response => {
+    //                 this.setState({
+    //                     input: response.data
+    //                 })
+    //             })
+    //     }
     // }
 
+
+    // FUNCTIONS FOR MODAL
+    
     showModal = () => {
         this.setState({
             showAnswerModal: true
@@ -49,7 +72,11 @@ class GameScreen extends React.Component{
         // if user output == answer -> display correct message, else display incorrect
         console.log('write this function later');
     }
-    
+
+//    UPDATE TO NEW INPUT
+// componentDidUpdate(){
+
+// }
     
     
     // putting in jsx holders for input phrase passed in, next morphemes list
@@ -61,13 +88,15 @@ class GameScreen extends React.Component{
                     hideModal={this.hideModal}
                     answerMessage={this.answerMessage} 
                 />
+
                 <div className='main__top-wrapper'>
-                <BackNav />
-                {/* <Timer /> */}
+                    <BackNav />
+                    {/* <Timer /> */}
                     <h2 className='main__test-title'>60s</h2>
                 </div>
-                    <h2 className='main__test-title'>'test input for styling'</h2>
-                    {/* <InputPhrase /> */}
+
+                <InputPhrase input={this.state.input.english}/>
+
                 <section className='game'>
                     <img className='game__image' src={dummyImage} alt=''/>
                     <div className='game__fall-space'></div>
@@ -75,11 +104,11 @@ class GameScreen extends React.Component{
                         {/* <NextList /> */}
                     </div>
                 </section>
+
                 <div className='game__output'>
                     {/* <Output /> */}
                 </div>
 
-               {/* button onclick modal, function added as prop to button component */}
                 <Button buttonText="Check" handler={this.showModal} />
                 
             </main>

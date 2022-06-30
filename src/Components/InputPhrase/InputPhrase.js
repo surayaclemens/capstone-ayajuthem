@@ -1,31 +1,23 @@
 import './InputPhrase.scss';
 import React from 'react';
-// import axios from 'axios';
 
-class InputPhrase extends React.Component{
-    state = {
-        input: "",
-    }
-// pulling data in from backend to fill initial mount
-    dataURL = 'http://localhost:8080/testData';
-    componentDidMount(){
-        // axios.get(this.dataURL)
-        // .then(response => {
-        //     this.setState({
-        //         input: response.data.english
-        //     })
-        // })
-        // .catch(error => console.error(error))
-    }
+function InputPhrase ({ input }) {
 
-
-    render(){
-        return (
-            <main className='input'>
-                <h1 className='input__text'>{this.english}</h1>
-            </main>
-        )
-    }
+    return (
+        <main className='input'>
+            <h1 className='input__text'>
+                {input}
+            </h1>
+        </main>
+    )
 }
+ 
 
 export default InputPhrase;
+
+// if (current phrase id !== previous phrase id) {}
+
+{/* /* {phrases.find((phrase) => {
+                //     phrase.id==this.match.params.phraseId
+                // })
+                // } */} 
