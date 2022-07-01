@@ -1,0 +1,28 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+
+.next-list{
+    border: 1px solid white;
+
+    &__header{
+        font-weight: 400;
+
+    }
+
+    &__morpheme-box{
+        border: 1px solid papayawhip;
+
+    }
+
+    &__morpheme-wrapper{
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+    &__morpheme-single{
+        color: white;
+
+    }
+
+}

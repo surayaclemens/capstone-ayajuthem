@@ -3,22 +3,25 @@ import React from 'react';
 import Button from '../../Components/Button/Button';
 import BackNav from '../../Components/BackNav/BackNav';
 // import Timer from '../../Components/Timer/Timer';
-import NextList from '../../Components/NextList/NextList';
 import AnswerModal from '../../Components/AnswerModal/AnswerModal';
 import InputPhrase from '../../Components/InputPhrase/InputPhrase';
+import FallingBlocks from '../../Components/FallingBlocks/FallingBlocks';
+import NextList from '../../Components/NextList/NextList';
+import Output from '../../Components/Output/Output';
 // import { NavLink } from 'react-router-dom';
 import dummyImage from '../../Assets/dummy.svg';
 import phrasesAPI from '../../utils/apiConfig';
 
-class GameScreen extends React.Component{
+
+class GameScreen extends React.Component {
     state = {
-        input: {},
+        input: "",
         allInputs: [],
-        image: null,
         output: [],
         showAnswerModal: false,
-        userAnswerCorrect: false
+        // userAnswerCorrect: false
     }
+
 
 // INITIAL MOUNT PULLING IN ALL DATA
     dataURL = 'http://localhost:5050/phrases';
@@ -26,13 +29,9 @@ class GameScreen extends React.Component{
     componentDidMount(){
         phrasesAPI.getAll()
         .then(response => {
-            // const firstPhrase = response.data[0];
             const allPhrases = response.data;
             this.setState({
-
-                // input: firstPhrase,
                 allInputs: allPhrases
-                // image:
             })
             this.getRandomPhrase(allPhrases)
         })
@@ -41,16 +40,13 @@ class GameScreen extends React.Component{
 
 // RANDOMIZER 
     getRandomPhrase = (array) => {
-        console.log(array)
-            const randomPhrase = Math.floor(Math.random() * array.length);
+        // console.log(array)
+            const randomIndex = Math.floor(Math.random() * array.length);
+            let singlePhrase = array[randomIndex]
             this.setState({
-                input:array[randomPhrase]
+                input: singlePhrase
             })
-            // console.log(randomPhrase)
-    }
-
-    shufflePhrases(array){
-        return array.sort(() => Math.random()-0.5)
+        // console.log(singlePhrase);
     }
 
 // FUNCTIONS FOR MODAL
@@ -66,17 +62,16 @@ class GameScreen extends React.Component{
         })
     }
 
-// FUNCTION TO GET NEW RANDOM PHRASE ON NEXT CLICK
+    // Get new random phrase on click of "next" within modal
     handleNext = () => {
         this.getRandomPhrase(this.state.allInputs);
         this.setState({
-            // input: nextRandomPhrase,
             showAnswerModal: false
         })
-
-        this.shufflePhrases(this.state.allInputs)
     }
     
+
+      
     // answerMessage = () => {
     //     // if user output == answer -> display correct message, else display incorrect
     //     console.log('write this function later');
@@ -84,6 +79,8 @@ class GameScreen extends React.Component{
 
     
     render(){
+        console.log(this.state.input.ayajuthem)
+        console.log(this.state.input.english)
         return (
             <main className='main'>
                 <AnswerModal 
@@ -100,17 +97,20 @@ class GameScreen extends React.Component{
                 </div>
 
                 <InputPhrase input={this.state.input.english}/>
+                
 
                 <section className='game'>
                     <img className='game__image' src={dummyImage} alt=''/>
-                    <div className='game__fall-space'></div>
+                    <div className='game__fall-space'>
+                        <FallingBlocks input={this.state.input.ayajuthem}/>
+                    </div>
                     <div className='game__next-list'>
-                        {/* <NextList /> */}
+                        <NextList input={this.state.input.ayajuthem}/>
                     </div>
                 </section>
 
                 <div className='game__output'>
-                    {/* <Output /> */}
+                    <Output />
                 </div>
 
                 <Button buttonText="Check" handler={this.showModal} />
@@ -122,20 +122,3 @@ class GameScreen extends React.Component{
 
 export default GameScreen;
 
-
-// UPDATE COMPONENT WHEN CHANGING PHRASE/DYNAMIC URL
-// for when each phrase is url with id, make it so if the current phraseId is different from the last one, get the info for the current one
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     const currentPhraseId = this.props.match.params.phraseId;
-    //     const previousPhraseId = prevProps.match.params.phraseId;
-
-    //     if (currentPhraseId !== previousPhraseId){
-    //         phrasesAPI.getOne(currentPhraseId)
-    //             .then(response => {
-    //                 this.setState({
-    //                     input: response.data
-    //                 })
-    //             })
-    //     }
-    // }

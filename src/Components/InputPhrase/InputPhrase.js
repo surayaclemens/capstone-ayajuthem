@@ -14,10 +14,3 @@ function InputPhrase ({ input }) {
  
 
 export default InputPhrase;
-
-// if (current phrase id !== previous phrase id) {}
-
-{/* /* {phrases.find((phrase) => {
-                //     phrase.id==this.match.params.phraseId
-                // })
-                // } */} 

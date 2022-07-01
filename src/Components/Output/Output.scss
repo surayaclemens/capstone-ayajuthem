@@ -1,0 +1,13 @@
+.output{
+    border: 1px dotted yellow;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &__field{
+        border: 2px solid skyblue;
+        height: 2rem;
+        width: 30rem;
+
+    }
+}
