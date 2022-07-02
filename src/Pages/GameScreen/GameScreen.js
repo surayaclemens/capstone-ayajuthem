@@ -16,7 +16,10 @@ import phrasesAPI from '../../utils/apiConfig';
 class GameScreen extends React.Component {
     state = {
         input: "",
-        allInputs: [],
+        inputArray: [],
+        // blockVisible: false,
+        morphArray: [],
+        currentBlock: "",
         output: [],
         showAnswerModal: false,
         // userAnswerCorrect: false
@@ -29,16 +32,34 @@ class GameScreen extends React.Component {
     componentDidMount(){
         phrasesAPI.getAll()
         .then(response => {
+
             const allPhrases = response.data;
             this.setState({
-                allInputs: allPhrases
+                inputArray: allPhrases
             })
+
             this.getRandomPhrase(allPhrases)
+
+            let allMorphs = this.state.input.ayajuthem?.split (" ");
+            this.setState({
+                morphArray: allMorphs
+            })
+
+            // console.log(allMorphs);
+
+            // set timeout to display the block 2 seconds after
+            if (allMorphs){
+                setTimeout(() => {this.getRandomMorph(allMorphs)}, 1000)
+                console.log(allMorphs);
+            }
+ 
         })
         .catch(error => console.error(error))
     }
 
-// RANDOMIZER 
+// RANDOMIZERS
+
+// Phrase randomizer for English input
     getRandomPhrase = (array) => {
         // console.log(array)
             const randomIndex = Math.floor(Math.random() * array.length);
@@ -46,8 +67,30 @@ class GameScreen extends React.Component {
             this.setState({
                 input: singlePhrase
             })
-        // console.log(singlePhrase);
     }
+
+// Randomizer to get random morpheme from the array
+    getRandomMorph = (array) => {
+        const randomNumber = Math.floor(Math.random() * array.length);
+        let randomMorph = array[randomNumber]; 
+        this.setState({
+            currentBlock: randomMorph
+        })
+    }
+
+
+// FUNCTIONS FOR BLOCKS
+
+    // showBlock = () => {
+    //     this.setState({
+    //         showBlock: true
+    //     })
+    // }
+
+    
+// need to invoke this function somehow to get classes applied - what's wrong with this set timeout???
+    // setTimeout(() => {showBlock()}, 3000)
+
 
 // FUNCTIONS FOR MODAL
     showModal = () => {
@@ -64,12 +107,12 @@ class GameScreen extends React.Component {
 
     // Get new random phrase on click of "next" within modal
     handleNext = () => {
-        this.getRandomPhrase(this.state.allInputs);
+        this.getRandomPhrase(this.state.inputArray);
         this.setState({
             showAnswerModal: false
         })
+        this.getRandomMorph(this.state.morphArray);
     }
-    
 
       
     // answerMessage = () => {
@@ -79,8 +122,8 @@ class GameScreen extends React.Component {
 
     
     render(){
-        console.log(this.state.input.ayajuthem)
-        console.log(this.state.input.english)
+        // console.log(this.state.input.ayajuthem)
+        // console.log(this.state.input.english)
         return (
             <main className='main'>
                 <AnswerModal 
@@ -102,10 +145,12 @@ class GameScreen extends React.Component {
                 <section className='game'>
                     <img className='game__image' src={dummyImage} alt=''/>
                     <div className='game__fall-space'>
-                        <FallingBlocks input={this.state.input.ayajuthem}/>
+                        <FallingBlocks 
+                        singleBlock={this.state.currentBlock}
+                        />
                     </div>
                     <div className='game__next-list'>
-                        <NextList input={this.state.input.ayajuthem}/>
+                        <NextList ayajuthem={this.state.input.ayajuthem}/>
                     </div>
                 </section>
 

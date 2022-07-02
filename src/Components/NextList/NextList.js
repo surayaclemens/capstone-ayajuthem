@@ -1,29 +1,25 @@
 import './NextList.scss';
 import React from 'react';
 
-function NextList ({ input }) {
+function NextList ({ ayajuthem }) {
 
- let morphs = input?.split (" ");
- console.log(morphs);
+ let morphsArray = ayajuthem?.split (" ");
+//  console.log(morphsArray);
 
 
         return(
             <section className='next-list'>
                 <h2 className='next-list__header'>Next Up</h2>
-                <div className='next-list__morpheme-box'>
-                    <div className='next-list__morpheme-wrapper'>
-                        <div className='next-list__morpheme-list'>
+                    <div className='next-list__morphemes-wrapper'>
                             {/* map through split morpheme array and for each morpheme, return a div with single morph*/}
-                            {morphs?.map((morph) => {
+                            {morphsArray?.map((morph) => {
                                 return(
                                     <div className='next-list__morpheme-single'>
                                         {morph}
                                     </div>
                                 )
                             })}
-                        </div>
                     </div>
-                </div>
             </section>
         )
     }

@@ -2,27 +2,29 @@
 @use '../../Styles/Partials/global' as *;
 @use '../../Styles/Partials/mixins' as *;
 
-.blocks {
+.blocks{
     border: 1px solid white;
-    height: 28rem;
-
-    &__blocks-all{
-        border: 4px dotted lime;
-        width: 100%;
-        height: 100%;
-
-    }
-
-    &__blocks-single{
-        border: 4px dotted lime;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 
 
+    &__single{
+        border: 2px solid white;
+        margin: 1rem;
+        width: 4rem;
+        font-size: 1.5rem;
+
+        
         &--visible{
-
+            display: flex;
         
         }
 
         &--hidden{
+            display: none;
 
         }
 

@@ -9,21 +9,11 @@
     color: white;
 
     &__top-wrapper{
-        // border: 1px solid  orange;
+        border: 1px solid  orange;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1rem 10rem 0 10rem;
-    }
-
-    &__test-title{
-        padding: 0;
-        
-    }
-
-    &__input-phrase{
-        // border: 1px solid yellow;
-
     }
 }
             
@@ -35,18 +25,18 @@
     padding: 1rem 10rem 0 10rem;
 
     &__image{
-        // border: 1px solid blue;
+        border: 1px solid blue;
         width: 15rem;
         height: auto;
     }
     &__fall-space{
-        // border: 1px solid purple;
+        border: 1px solid purple;
         width: 30rem;
         height: 60vh;
     }
 
     &__next-list{
-        // border: 1px solid magenta;
+        border: 1px solid magenta;
         width: 15rem;
     }
 

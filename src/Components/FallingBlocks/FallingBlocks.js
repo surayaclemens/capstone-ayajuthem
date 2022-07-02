@@ -1,27 +1,31 @@
 import './FallingBlocks.scss';
 import React from 'react';
 
-function FallingBlocks ({ input }) {
-    let morphs = input?.split (" ");
-    console.log(morphs);
-   
-   
-    return (
-        <section className='blocks'>
-           
-            <div className='blocks__all'>
-               
-            {morphs?.map((morph) => {
-                return(
-                    <div className='blocks__single'>
-                        {morph}
-                    </div>
-                )
-            })}
-            </div>
-        </section>
-    )
-}
+function FallingBlocks ({singleBlock}) {
+
+
+    // const blockVisClass = blockVisible ? "blocks__single--visible" : "blocks__single--hidden"
+    // {blockVisClass}
+
+       return (
+
+           <section className='blocks'>
+                        <div className='blocks__single'>
+                            {singleBlock}
+                        </div>
+                 
+                {/* {morphsArray?.map((morph) => {
+                   return(
+                       <div className={blockVisClass}>
+                           {morph}  
+                       </div>
+                   )
+               })} */}
+
+           </section>
+       )
+   }
  
 
 export default FallingBlocks;
+

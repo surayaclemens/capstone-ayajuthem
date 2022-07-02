@@ -4,24 +4,28 @@
 
 .next-list{
     border: 1px solid white;
+    height: 100%;
 
     &__header{
-        font-weight: 400;
+        border: 1px solid orange;
 
     }
 
-    &__morpheme-box{
-        border: 1px solid papayawhip;
-
-    }
-
-    &__morpheme-wrapper{
-        color: white;
-        font-family: 'Courier New', Courier, monospace;
+    &__morphemes-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // height: 100%;
+        border: 1px solid red;
+        margin: 0;
     }
     
     &__morpheme-single{
         color: white;
+        border: 2px solid white;
+        width: 4rem;
+        margin: 1rem;
+        font-size: 1.5rem;
 
     }
 
