@@ -1,6 +1,7 @@
 @use '../../Styles/Partials/colors' as *;
 @use '../../Styles/Partials/global' as *;
 @use '../../Styles/Partials/mixins' as *;
+@use '../../Styles/Partials/animations' as *;
 
 
 .answer-modal{
@@ -13,9 +14,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    &--show{
-    }
     
     &__content{
         position: relative;
@@ -40,12 +38,17 @@
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
+        
     
     }
 
     &__close-icon{
         width: 1.5rem;
         height: 1.5rem;
+        &:hover{
+            animation: spin 2s linear infinite;
+        }
+
     }
 
     &__header{
@@ -58,4 +61,9 @@
     &__message{
     
     }
+}
+
+.button--plain{
+    border: 1px solid white;
+    box-shadow: none;
 }

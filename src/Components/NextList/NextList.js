@@ -12,10 +12,10 @@ function NextList ({ ayajuthem }) {
                 <h2 className='next-list__header'>Word Bank</h2>
                     <div className='next-list__morphemes-wrapper'>
                             {/* map through split morpheme array and for each morpheme, return a div with single morph*/}
-                            {morphsArray?.map((morph) => {
+                            {morphsArray?.map((morph,index) => {
                                 return(
                                     <div 
-                                    
+                                    key={index}
                                     className='next-list__morpheme-single'>
                                         {morph}
                                     </div>

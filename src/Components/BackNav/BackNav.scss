@@ -1,8 +1,22 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+@use '../../Styles/Partials/variables' as *;
+
 .back-nav{
     padding-top: 0;
+    display: flex;
+    justify-content: flex-start;
+    
     
     &__image{
-        width: 8rem;
+        width: 6rem;
+
+        @include tablet{
+            width: 8rem;
+
+        }
+    
 
     }
 }

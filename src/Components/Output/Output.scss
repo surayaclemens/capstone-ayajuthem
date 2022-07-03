@@ -1,3 +1,8 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+@use '../../Styles/Partials/variables' as *;
+
 .output{
     // border: 1px dotted yellow;
     width: 100%;
@@ -10,7 +15,11 @@
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
         height: 3.5rem;
-        width: 34rem;
+        width: 90%;
+
+        @include tablet {
+            width: 34rem;
+        }
 
     }
 }

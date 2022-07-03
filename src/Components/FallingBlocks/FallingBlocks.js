@@ -1,41 +1,40 @@
 import './FallingBlocks.scss';
 import React from 'react';
 
-function FallingBlocks ({firstBlock, allMorphs, secondBlock, thirdBlock}) {
+function FallingBlocks ({morphsArray}) {
 
 
     // const blockVisClass = blockVisible ? "blocks__single--visible" : "blocks__single--hidden"
     // {blockVisClass}
 
+    let shuffledMorphsArray = morphsArray
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+
        return (
 
            <section className='blocks'>
-                        <div className='blocks__single'>
-                            {firstBlock}
-                        </div>
-                        {/* {allMorphs?.map((morph => {
-                            return(
-                                <div className='blocks__single'>
-                                    {morph}
-                                </div>
-                            )
-                        }))} */}
-                        <div className='blocks__single'>
-                            {secondBlock}
-                        </div>
-                        <div className='blocks__single'>
-                            {thirdBlock}
-                        </div>
-                       
-                 
-                {/* {morphsArray?.map((morph) => {
-                   return(
-                       <div className={blockVisClass}>
-                           {morph}  
-                       </div>
-                   )
-               })} */}
 
+                {shuffledMorphsArray?.map((morph,index) => {
+                    return(
+                        <div 
+                        key={index}
+                        className='next-list__morpheme-single'>
+                            {morph}
+                        </div>
+                    )
+                })}
+
+                        {/* // <div className='blocks__single'>
+                        //     {firstBlock}
+                        // </div>
+                        // <div className='blocks__single'>
+                        //     {secondBlock}
+                        // </div>
+                        // <div className='blocks__single'>
+                        //     {thirdBlock}
+                        // </div> */}
            </section>
        )
    }

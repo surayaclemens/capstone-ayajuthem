@@ -1,6 +1,15 @@
+@use '../../Styles/Partials/colors' as *;
+@use '../../Styles/Partials/global' as *;
+@use '../../Styles/Partials/mixins' as *;
+@use '../../Styles/Partials/variables' as *;
+
 .english-phrase{
     font-size: 1.4rem;
     margin: 0;
+    padding: 1rem;
+    @include tablet{
+        padding: 0;
+    }
 
     &__text{
         margin: 0;

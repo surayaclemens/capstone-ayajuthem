@@ -31,39 +31,48 @@
         font-size: 1.75rem;
         font-weight: 600;
         line-height: 2rem;
-        padding: 0 6rem;
-        margin: 1rem 0;
-        display: flex;
-        
-    // separate each line of text into different modifier class, set timeout to add class staggered so each line gets typed separately
-
+        padding: 0;
+        width: 0;
         overflow: hidden; /* Ensures the content is not revealed until the animation */
-        // white-space: nowrap; /* Keeps the content on a single line */
+        white-space: nowrap;
         margin: 0 auto; /* Gives that scrolling effect as the typing happens */
         letter-spacing: .15em; /* Adjust as needed */
-        // animation: typing 8s steps(50, end);
+        animation: typing 5s steps(40, end) forwards;
+        
+        
+    // separate each line of text into different modifier class, set timeout to add class staggered so each line gets typed separately
 
         &--first{
 
         }
 
         &--second{
+            animation-delay: 4.3s;
 
         }
 
         &--third{
+            animation-delay: 8s;
+            
 
         }
 
-        &--focus{
-            display: inline;
-            line-height: 2.75rem;
+        &--fourth{
+            animation-delay: 11s;
+           
+
+        }
+
+        &--fifth{
+            animation-delay: 16s;
+           
 
         }
     }
 
     &__button-wrapper{
             animation: buttonBounce 3.5s linear infinite;
+            animation-delay: 18.2s;
         }
     
 

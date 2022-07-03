@@ -20,7 +20,7 @@ function AnswerModal( { hideModal, correctAnswer, showAnswerModal, answerMessage
                 </p>
                 <p className='answer-modal__message'>{answerMessage}</p>
 
-                <Button buttonText="Next" handler={handleNext}/>
+                <Button buttonText="Next" handler={handleNext} className='button button--plain'/>
             </div>
         </div>
     );

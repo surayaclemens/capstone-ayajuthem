@@ -27,15 +27,15 @@
     }
 
     25% {
-        transform: translate(5px, 5px);
+        transform: translate(6px, 8px);
     }
 
     50% {
-        transform: translate(-5px, 0px);
+        transform: translate(-9px, 0px);
     }
     
     75% {
-      transform: translate(0px, -5px);
+      transform: translate(2px, -8px);
     }
 
     100% {
@@ -55,5 +55,5 @@
 
   @keyframes typing {
     from { width: 0 }
-    to { width: 70% }
+    to { width: 100% }
   }
