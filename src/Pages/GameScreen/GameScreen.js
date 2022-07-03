@@ -16,7 +16,7 @@ class GameScreen extends React.Component {
   state = {
     phraseObj: "",
     phrasesArray: [],
-    blockVisible: false,
+    blockVisible: true,
     blockArray: [],
     output: [],
     showAnswerModal: false,
@@ -28,7 +28,7 @@ class GameScreen extends React.Component {
 
   componentDidMount() {
 
-    document.title="Game on 🧱 👀 🕹 "
+    document.title="Game on  🧱 👀 🕹 "
 
     phrasesAPI.getAll()
         .then((response) => {
@@ -50,30 +50,19 @@ class GameScreen extends React.Component {
             phraseObj: singlePhrase,
             blockArray: morphArray,
         });
-
-        console.log(singlePhrase);
-        console.log(morphArray)
-    
-  
-        // call randomizer for each morph in array to get single morph for play block
-            // timed after mount so defined & staggered
-            // sets currentBlock -> randomMorph
-            // used forEach here because I need to take each one out of the array
-        // setTimeout(() => {
-           
-        // }, 3000);
-
-        // allMorphs?.forEach((morph) => {
-        //   setTimeout(() => {
-        //     this.getRandomMorph(allMorphs);
-        //   }, 1000);
-        //   console.log(morph);
-        // });
+        // console.log(singlePhrase);
+        // console.log(morphArray)
       })
       .catch((error) => console.error(error));
   }
 
 componentDidUpdate(){
+    
+    this.showBlock = () => {
+        this.setState({
+            blockVisible: true
+        })
+    }
     // let allMorphs = this.state.phraseObj.ayajuthem?.split(" ");
     // // console.log(this.state.phraseObj.ayajuthem)
     // allMorphs?.forEach((morph) => {
@@ -91,21 +80,15 @@ componentDidUpdate(){
     // component did update just changes class for visibility
 
     // Morpheme randomizer for single morpheme for play block
-    getRandomMorph = (array) => {
-        const randomNumber = Math.floor(Math.random() * array.length);
-        let randomMorph = array[randomNumber];
-            this.setState({
-                currentBlock: randomMorph
-            });
-    };
+    // getRandomMorph = (array) => {
+    //     const randomNumber = Math.floor(Math.random() * array.length);
+    //     let randomMorph = array[randomNumber];
+    //         this.setState({
+    //             currentBlock: randomMorph
+    //         });
+    // };
 
-  // FUNCTIONS FOR BLOCKS
 
-  // showBlock = () => {
-  //     this.setState({
-  //         showBlock: true
-  //     })
-  // }
 
   // FUNCTIONS FOR MODAL
   showModal = () => {
@@ -135,8 +118,6 @@ componentDidUpdate(){
   // }
 
   render() {
-    // console.log(this.state.phraseObj.ayajuthem)
-    // console.log(this.state.phraseObj.english)
     return (
       <main className="main">
             <AnswerModal
@@ -157,11 +138,14 @@ componentDidUpdate(){
             <section className="game">
             <img className="game__image" src={dummyImage} alt="" />
             <div className="game__fall-space">
-                    <FallingBlocks morphsArray={this.state.blockArray}
-                    />
+                <FallingBlocks 
+                morphsArray={this.state.blockArray}
+                blockVisible={this.state.blockVisible}
+                />
             </div>
             <div className="game__next-list">
-                <NextList ayajuthem={this.state.phraseObj.ayajuthem} />
+                <NextList ayajuthem={this.state.phraseObj.ayajuthem} 
+                />
             </div>
             </section>
 

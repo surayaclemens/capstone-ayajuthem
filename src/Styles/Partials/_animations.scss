@@ -57,3 +57,27 @@
     from { width: 0 }
     to { width: 100% }
   }
+
+  // smooth fall from initial position to land in output bar
+  @keyframes blockDrop {
+    0% {
+      transform: translate(0px, 0px);
+    }
+
+    25% {
+        transform: translate(0px, 97.75px);
+    }
+
+    50% {
+        transform: translate(0px, 195.5px);
+    }
+    
+    75% {
+      transform: translate(0px, 293.25px);
+    }
+
+    100% {
+        transform: translate(0px, 391px);
+    }
+
+  }

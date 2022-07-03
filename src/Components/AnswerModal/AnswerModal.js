@@ -14,11 +14,11 @@ function AnswerModal( { hideModal, correctAnswer, showAnswerModal, answerMessage
                 <div className='answer-modal__close'>
                     <img className='answer-modal__close-icon' src={closeIcon} alt='close-icon' onClick={hideModal} />
                 </div>
-                <h3 className='answer-modal__header'>Correct answer:</h3>
+                <h3 className='answer-modal__header'>Compare your answer to:</h3>
                 <p className='answer-modal__correct-answer'>
                     {correctAnswer}
                 </p>
-                <p className='answer-modal__message'>{answerMessage}</p>
+                <p className='answer-modal__message'>Try another?</p>
 
                 <Button buttonText="Next" handler={handleNext} className='button button--plain'/>
             </div>

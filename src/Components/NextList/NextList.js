@@ -9,7 +9,7 @@ function NextList ({ ayajuthem }) {
 
         return(
             <section className='next-list'>
-                <h2 className='next-list__header'>Word Bank</h2>
+                <h2 className='next-list__header'>Block Bank</h2>
                     <div className='next-list__morphemes-wrapper'>
                             {/* map through split morpheme array and for each morpheme, return a div with single morph*/}
                             {morphsArray?.map((morph,index) => {

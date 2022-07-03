@@ -7,9 +7,11 @@
     // border: 1px solid white;
     height: 100%;
     display: flex;
-    // flex-direction: column;
     align-items: flex-start;
     position: relative;
+    @include tablet {
+        height: auto;
+    }
     
 
 
@@ -17,14 +19,19 @@
         @include bankBlocks;
         background-color: $periwinkle;
         position: relative;
-            top: 20%;
+        text-align: center;
+        
 
         
-        &--visible{
-            display: flex;
-            position: relative;
-            top: 20%;
+        &--current{
+            display: block;
 
+            &:nth-child(2){
+                display: none;
+            }
+            &:nth-child(3){
+                display: none;
+            }
             
         
         }
@@ -33,6 +40,17 @@
             display: none;
 
         }
+
+
+
+        &--testing {
+            position: relative;
+            // animation: blockDrop 10s linear forwards;
+            
+
+        }
+
+
 
     }
 }

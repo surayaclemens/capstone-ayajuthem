@@ -26,7 +26,10 @@
     
     &__morpheme-single{
         @include bankBlocks;
-        background-color: $pale-orange-2;
+        &:nth-child(1){
+            background-color: $pale-orange-2;
+            // display: none;
+        }
         &:nth-child(2){
             background-color: $pale-pink;
         }
