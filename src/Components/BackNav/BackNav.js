@@ -1,4 +1,4 @@
-import backHome from '../../Assets/backHome.png';
+import backHome from '../../Assets/backarrow.svg';
 import './BackNav.scss';
 import {NavLink} from 'react-router-dom';
 

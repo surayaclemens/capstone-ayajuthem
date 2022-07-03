@@ -15,23 +15,26 @@
     font-family: 'Aldrich';
     
     &__instruction-block{
-        background-color: #F19173;
+        background-color: $pale-orange-3;
         padding: 1rem 0;
-        height: 12rem;
-        width: 50rem;
+        height: 11rem;
+        width: 48rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 5px;
-        box-shadow: 3px 4px rgba(255, 221, 85, 0.825);
+        box-shadow: 4px 4px rgb(255, 208, 0);
     }
     
     &__instruction-text{
         font-size: 1.75rem;
+        font-weight: 600;
+        line-height: 2rem;
         padding: 0 6rem;
         margin: 1rem 0;
         display: flex;
+        
     // separate each line of text into different modifier class, set timeout to add class staggered so each line gets typed separately
 
         overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -51,6 +54,17 @@
         &--third{
 
         }
+
+        &--focus{
+            display: inline;
+            line-height: 2.75rem;
+
+        }
     }
+
+    &__button-wrapper{
+            animation: buttonBounce 3.5s linear infinite;
+        }
+    
 
 }

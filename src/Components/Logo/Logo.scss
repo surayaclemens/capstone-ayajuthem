@@ -1,6 +1,9 @@
 @use '../../Styles/Partials/animations' as *;
 
 .logo{
+    &__image{
+        width: 28rem;
+    }
     &:hover{
         animation: logoBob 3s linear infinite;
     }

@@ -1,7 +1,7 @@
 import './FallingBlocks.scss';
 import React from 'react';
 
-function FallingBlocks ({singleBlock}) {
+function FallingBlocks ({firstBlock, allMorphs, secondBlock, thirdBlock}) {
 
 
     // const blockVisClass = blockVisible ? "blocks__single--visible" : "blocks__single--hidden"
@@ -11,8 +11,22 @@ function FallingBlocks ({singleBlock}) {
 
            <section className='blocks'>
                         <div className='blocks__single'>
-                            {singleBlock}
+                            {firstBlock}
                         </div>
+                        {/* {allMorphs?.map((morph => {
+                            return(
+                                <div className='blocks__single'>
+                                    {morph}
+                                </div>
+                            )
+                        }))} */}
+                        <div className='blocks__single'>
+                            {secondBlock}
+                        </div>
+                        <div className='blocks__single'>
+                            {thirdBlock}
+                        </div>
+                       
                  
                 {/* {morphsArray?.map((morph) => {
                    return(

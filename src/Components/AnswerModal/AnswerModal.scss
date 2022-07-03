@@ -7,7 +7,7 @@
     // border: 2px solid limegreen;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.737);
+    background-color: rgba(255, 255, 255, 0.437);
     position: absolute;
     z-index: 1;
     display: flex;
@@ -18,10 +18,12 @@
     }
     
     &__content{
+        position: relative;
+        // top: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: $pale-orange;
+        background-color: $periwinkle;
         height: 20rem;
         width: 30rem;
         padding: 1rem;
@@ -37,6 +39,7 @@
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        cursor: pointer;
     
     }
 
@@ -46,6 +49,7 @@
     }
 
     &__header{
+        font-size: 2rem;
     
     }
     &__correct-answer{

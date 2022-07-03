@@ -3,7 +3,7 @@
 @use '../../Styles/Partials/mixins' as *;
 
 .blocks{
-    border: 1px solid white;
+    // border: 1px solid white;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -12,14 +12,13 @@
 
 
     &__single{
-        border: 2px solid white;
-        margin: 1rem;
-        width: 4rem;
-        font-size: 1.5rem;
+        @include bankBlocks;
+        
 
         
         &--visible{
             display: flex;
+            
         
         }
 

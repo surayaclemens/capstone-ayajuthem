@@ -4,7 +4,7 @@ import Button from '../../Components/Button/Button';
 import BackNav from '../../Components/BackNav/BackNav';
 // import Timer from '../../Components/Timer/Timer';
 import AnswerModal from '../../Components/AnswerModal/AnswerModal';
-import InputPhrase from '../../Components/InputPhrase/InputPhrase';
+import EnglishPhrase from '../../Components/EnglishPhrase/EnglishPhrase';
 import FallingBlocks from '../../Components/FallingBlocks/FallingBlocks';
 import NextList from '../../Components/NextList/NextList';
 import Output from '../../Components/Output/Output';
@@ -15,67 +15,75 @@ import phrasesAPI from '../../utils/apiConfig';
 
 class GameScreen extends React.Component {
     state = {
-        input: "",
-        inputArray: [],
+        phraseObj: "",
+        phrasesArray: "",
         // blockVisible: false,
-        morphArray: [],
         currentBlock: "",
+        secondBlock: "",
         output: [],
         showAnswerModal: false,
         // userAnswerCorrect: false
     }
 
 
-// INITIAL MOUNT PULLING IN ALL DATA
+// INITIAL MOUNT
     dataURL = 'http://localhost:5050/phrases';
 
     componentDidMount(){
         phrasesAPI.getAll()
         .then(response => {
 
+            // get all the phrases from api
             const allPhrases = response.data;
+            
+            // put all the phrases in current state
             this.setState({
-                inputArray: allPhrases
+                phrasesArray: allPhrases
             })
 
+            // call randomizer on all to get single phrase for phraseObj
+            // the randomizer sets phraseObj -> an index of allPhrases array which is a single object with id, eng, ayaj. the eng gets put into component
             this.getRandomPhrase(allPhrases)
+            
+            
+            // turn ayajuthem string from phraseObj into array to use to get random morpheme for block
+            let allMorphs = this.state.phraseObj.ayajuthem?.split (" ");
 
-            let allMorphs = this.state.input.ayajuthem?.split (" ");
-            this.setState({
-                morphArray: allMorphs
-            })
-
-            // console.log(allMorphs);
-
-            // set timeout to display the block 2 seconds after
-            if (allMorphs){
-                setTimeout(() => {this.getRandomMorph(allMorphs)}, 1000)
-                console.log(allMorphs);
-            }
- 
+            // call randomizer for each morph in array to get single morph for play block
+            // timed 1 second after mount so defined & staggered
+            // the randomizer sets currentBlock -> randomMorph
+                allMorphs?.forEach((morph) => {
+                    setTimeout(() => {this.getRandomMorph(allMorphs)}, 1000)
+                    console.log(morph);
+                })
         })
         .catch(error => console.error(error))
     }
 
 // RANDOMIZERS
 
-// Phrase randomizer for English input
+// Phrase randomizer for single phrase phraseObj from all phrases
     getRandomPhrase = (array) => {
         // console.log(array)
             const randomIndex = Math.floor(Math.random() * array.length);
             let singlePhrase = array[randomIndex]
             this.setState({
-                input: singlePhrase
+                phraseObj: singlePhrase
             })
     }
 
-// Randomizer to get random morpheme from the array
+// Morpheme randomizer for single morpheme for play block
     getRandomMorph = (array) => {
         const randomNumber = Math.floor(Math.random() * array.length);
         let randomMorph = array[randomNumber]; 
-        this.setState({
-            currentBlock: randomMorph
-        })
+        if (!this.state.currentBlock){
+            this.setState({
+                currentBlock: randomMorph
+            })
+        } else {
+            console.log(randomMorph)
+        }
+
     }
 
 
@@ -107,7 +115,7 @@ class GameScreen extends React.Component {
 
     // Get new random phrase on click of "next" within modal
     handleNext = () => {
-        this.getRandomPhrase(this.state.inputArray);
+        this.getRandomPhrase(this.state.phrasesArray);
         this.setState({
             showAnswerModal: false
         })
@@ -122,8 +130,8 @@ class GameScreen extends React.Component {
 
     
     render(){
-        // console.log(this.state.input.ayajuthem)
-        // console.log(this.state.input.english)
+        // console.log(this.state.phraseObj.ayajuthem)
+        // console.log(this.state.phraseObj.english)
         return (
             <main className='main'>
                 <AnswerModal 
@@ -139,18 +147,21 @@ class GameScreen extends React.Component {
                     <h2 className='main__test-title'>60s</h2>
                 </div>
 
-                <InputPhrase input={this.state.input.english}/>
+                <EnglishPhrase phrase={this.state.phraseObj.english}/>
                 
 
                 <section className='game'>
                     <img className='game__image' src={dummyImage} alt=''/>
                     <div className='game__fall-space'>
                         <FallingBlocks 
-                        singleBlock={this.state.currentBlock}
+                        firstBlock={this.state.currentBlock}
+                        // allMorphs={this.state.allMorphs}
+                        secondBlock={this.state.secondBlock}
+                        // thirdBlock={this.state.thirdBlock}
                         />
                     </div>
                     <div className='game__next-list'>
-                        <NextList ayajuthem={this.state.input.ayajuthem}/>
+                        <NextList ayajuthem={this.state.phraseObj.ayajuthem}/>
                     </div>
                 </section>
 

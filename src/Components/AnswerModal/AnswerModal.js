@@ -1,6 +1,6 @@
 import './AnswerModal.scss';
 import Button from '../Button/Button';
-import closeIcon from '../../Assets/close.svg';
+import closeIcon from '../../Assets/closeGreen.svg';
 
 
 function AnswerModal( { hideModal, correctAnswer, showAnswerModal, answerMessage, handleNext }) {
@@ -8,7 +8,8 @@ function AnswerModal( { hideModal, correctAnswer, showAnswerModal, answerMessage
 
     
     return (  
-        <div className={modalDisplayClass}>
+        <div className={modalDisplayClass}
+            onClick={hideModal}>
             <div className='answer-modal__content'>
                 <div className='answer-modal__close'>
                     <img className='answer-modal__close-icon' src={closeIcon} alt='close-icon' onClick={hideModal} />

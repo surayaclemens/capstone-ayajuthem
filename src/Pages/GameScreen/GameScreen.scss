@@ -9,7 +9,7 @@
     color: white;
 
     &__top-wrapper{
-        border: 1px solid  orange;
+        // border: 1px solid  orange;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -30,20 +30,21 @@
         height: auto;
     }
     &__fall-space{
-        border: 1px solid purple;
+        // border: 1px solid purple;
         width: 30rem;
-        height: 60vh;
+        height: 58vh;
     }
 
     &__next-list{
-        border: 1px solid magenta;
+        // border: 1px solid magenta;
         width: 15rem;
+        margin-top: 1rem;
     }
 
     &__output{
         // border: 1px solid palevioletred;
-        margin-bottom: 1rem;
-        height: 2.5rem;
+        margin-bottom: 1.7rem;
+        height: 4rem;
         display: flex;
         
     }
