@@ -4,8 +4,10 @@ import { Component } from 'react';
 import HomeScreen from './Pages/HomeScreen/HomeScreen';
 import GameScreen from './Pages/GameScreen/GameScreen';
 
+
 class App extends Component {
 
+  
   render() {
     return (
       <div className="App">
@@ -13,9 +15,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={HomeScreen} />
             <Route path="/phrases" exact component={GameScreen} />
-            {/* <Route path="/phrases:id" component={GameScreen} /> */}
           </Switch> 
-          {/* <Footer /> */}
         </BrowserRouter>
       </div>
     );

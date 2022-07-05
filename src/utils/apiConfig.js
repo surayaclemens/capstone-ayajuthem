@@ -6,9 +6,6 @@ const phrasesAPI = {
     getAll: () => {
         return axios.get(dataURL)
     },
-    // getOne: (id) => {
-    //     return axios.get(dataURL+"/"+id)
-    // }
 }
 
 export default phrasesAPI;

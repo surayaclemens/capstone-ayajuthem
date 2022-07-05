@@ -8,7 +8,6 @@ import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
 import NextList from "../../Components/NextList/NextList";
 import Output from "../../Components/Output/Output";
-// import { NavLink } from 'react-router-dom';
 import dummyImage from "../../Assets/dummy.svg";
 import phrasesAPI from "../../utils/apiConfig";
 
@@ -18,8 +17,10 @@ class GameScreen extends React.Component {
     phrasesArray: [],
     blockVisible: true,
     blockArray: [],
-    output: [],
+    // output: [],
     showAnswerModal: false,
+    blockLeft: [0, 175, 350]
+
     // userAnswerCorrect: false
   };
 
@@ -40,29 +41,40 @@ class GameScreen extends React.Component {
           phrasesArray: allPhrases,
         });
 
+// might have to put from here down to just before catch back into function so it can work on next button in modal
         // randomize all phrases from API to get single phrase for phraseObj
         const randomIndex = Math.floor(Math.random() * allPhrases.length);
+       
         let singlePhrase = allPhrases[randomIndex];
         // split the single phrase to have its morphs in an array
         let morphArray = singlePhrase.ayajuthem.split(" ");
-        // get random word from the split array, filter that one out, keep going through array until all are out (while loop - while length of array >=1)
+    
+        
+
         this.setState({
+           // **trying to add filter so phrases don't repeat, could also try to tack onto end of [randomIndex]
             phraseObj: singlePhrase,
             blockArray: morphArray,
         });
-        // console.log(singlePhrase);
-        // console.log(morphArray)
+
+
+        
       })
       .catch((error) => console.error(error));
   }
 
 componentDidUpdate(){
+// component did update just changes class of block for visibility, so your current play block updates. but how to get this to fire?
+
+// if block 1 is... in certain position?? is that even possible? set timeout? change state of block 2 to visible
     
     this.showBlock = () => {
         this.setState({
             blockVisible: true
         })
     }
+
+
     // let allMorphs = this.state.phraseObj.ayajuthem?.split(" ");
     // // console.log(this.state.phraseObj.ayajuthem)
     // allMorphs?.forEach((morph) => {
@@ -75,9 +87,9 @@ componentDidUpdate(){
 
 
 
+
     // array in right order, array in random order
     // do randomizing in mount, determine which word is first, second, third (array of 3 shuffled morphs) then pull one in update
-    // component did update just changes class for visibility
 
     // Morpheme randomizer for single morpheme for play block
     // getRandomMorph = (array) => {
@@ -103,6 +115,8 @@ componentDidUpdate(){
     });
   };
 
+
+//   ***might need to make getRandomMorph a function again so it can be called in the modal to move to the next one
   // Get new random phrase on click of "next" within modal
   handleNext = () => {
     this.getRandomPhrase(this.state.phrasesArray);
@@ -125,6 +139,7 @@ componentDidUpdate(){
             hideModal={this.hideModal}
             answerMessage={this.answerMessage}
             handleNext={this.handleNext}
+            correctAnswer={this.state.phraseObj.ayajuthem}
             />
 
             <div className="main__top-wrapper">
@@ -141,6 +156,7 @@ componentDidUpdate(){
                 <FallingBlocks 
                 morphsArray={this.state.blockArray}
                 blockVisible={this.state.blockVisible}
+                blockLeft={this.state.blockLeft}
                 />
             </div>
             <div className="game__next-list">

@@ -53,9 +53,17 @@
 
     &__header{
         font-size: 2rem;
+        margin-bottom: .25rem;
     
     }
     &__correct-answer{
+        border: 1px solid white;
+        border-radius: 5px;
+        height: 2rem;
+        width: 82%;
+        padding: .5rem;
+        background-color: $dark-blue;
+        font-size: 1.5rem;
     
     }
     &__message{

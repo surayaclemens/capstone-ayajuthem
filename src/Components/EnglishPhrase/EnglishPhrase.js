@@ -7,6 +7,8 @@ function EnglishPhrase ({ phrase }) {
         <main className='english-phrase'>
             <h1 className='english-phrase__text'>
                 {phrase}
+                {}
+
             </h1>
         </main>
     )
