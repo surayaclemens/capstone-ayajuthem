@@ -8,7 +8,7 @@ import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
 import NextList from "../../Components/NextList/NextList";
 import Output from "../../Components/Output/Output";
-import dummyImage from "../../Assets/dummy.svg";
+import gameImage from "../../Assets/tet.png";
 import phrasesAPI from "../../utils/apiConfig";
 
 class GameScreen extends React.Component {
@@ -17,11 +17,11 @@ class GameScreen extends React.Component {
     phrasesArray: [],
     blockVisible: true,
     blockArray: [],
-    // output: [],
     showAnswerModal: false,
-    blockLeft: [0, 175, 350]
+    blockLeft: [0, 140, 280],
+    blockActive: false,
+    gameRound: 0
 
-    // userAnswerCorrect: false
   };
 
   // INITIAL MOUNT
@@ -29,107 +29,76 @@ class GameScreen extends React.Component {
 
   componentDidMount() {
 
-    document.title="Game on  🧱 👀 🕹 "
+  document.title="Game on  🧱 👀 🕹 "
 
     phrasesAPI.getAll()
-        .then((response) => {
-        // get all the phrases from API 
-        const allPhrases = response.data;
+      .then((response) => {
+      // get all the phrases from API 
+      const allPhrases = response.data;
 
-        // put all the phrases in current state
-        this.setState({
-          phrasesArray: allPhrases,
-        });
+      //Put all the phrases in current state
+      this.setState({
+        phrasesArray: allPhrases,
+      });
 
-// might have to put from here down to just before catch back into function so it can work on next button in modal
-        // randomize all phrases from API to get single phrase for phraseObj
-        const randomIndex = Math.floor(Math.random() * allPhrases.length);
-       
-        let singlePhrase = allPhrases[randomIndex];
-        // split the single phrase to have its morphs in an array
-        let morphArray = singlePhrase.ayajuthem.split(" ");
-    
-        
-
-        this.setState({
-           // **trying to add filter so phrases don't repeat, could also try to tack onto end of [randomIndex]
-            phraseObj: singlePhrase,
-            blockArray: morphArray,
-        });
-
-
-        
+      // Call randomizer, wrapped in timer so it can load
+      setTimeout (this.randomizer, 1) 
       })
+
       .catch((error) => console.error(error));
   }
 
-componentDidUpdate(){
-// component did update just changes class of block for visibility, so your current play block updates. but how to get this to fire?
+  // Function to randomize all phrases to put single into phraseObj
+  randomizer = () => {
+    let randomIndex = Math.floor(Math.random() * this.state.phrasesArray.length);
+    let singlePhrase = this.state.phrasesArray[randomIndex];
+    // split the single phrase to have its morphs in an array
+    let morphArray = singlePhrase.ayajuthem.split(" ");
+    this.setState({
+        phraseObj: singlePhrase,
+        blockArray: morphArray,
+    });
+  }
 
-// if block 1 is... in certain position?? is that even possible? set timeout? change state of block 2 to visible
-    
-    this.showBlock = () => {
-        this.setState({
-            blockVisible: true
-        })
-    }
-
-
-    // let allMorphs = this.state.phraseObj.ayajuthem?.split(" ");
-    // // console.log(this.state.phraseObj.ayajuthem)
-    // allMorphs?.forEach((morph) => {
-    //     // this.getRandomMorph(allMorphs);
-    //     let singleMorph = morph;
-    //     console.log(singleMorph);
-    // });
-    // state change is just whatever block they're on
-}
-
-
-
-
-    // array in right order, array in random order
-    // do randomizing in mount, determine which word is first, second, third (array of 3 shuffled morphs) then pull one in update
-
-    // Morpheme randomizer for single morpheme for play block
-    // getRandomMorph = (array) => {
-    //     const randomNumber = Math.floor(Math.random() * array.length);
-    //     let randomMorph = array[randomNumber];
-    //         this.setState({
-    //             currentBlock: randomMorph
-    //         });
-    // };
-
-
-
-  // FUNCTIONS FOR MODAL
+  // Function to get new random phrase on click of "next" within modal
+  handleNext = () => {
+    this.randomizer();
+    this.setState({
+      gameRound: this.state.gameRound++
+    })
+  }
+  // Function to show blocks
+  showBlock = () => {
+      this.setState({
+        blockVisible: true
+      })
+  }
+// Function to show check modal
   showModal = () => {
     this.setState({
       showAnswerModal: true,
     });
   };
-
+  // Function to hide check modal
   hideModal = () => {
     this.setState({
       showAnswerModal: false,
     });
   };
-
-
-//   ***might need to make getRandomMorph a function again so it can be called in the modal to move to the next one
-  // Get new random phrase on click of "next" within modal
-  handleNext = () => {
-    this.getRandomPhrase(this.state.phrasesArray);
+  // Function to set the active block (on click)
+  makeBlockActive = () => {
     this.setState({
-      showAnswerModal: false,
-    });
-    this.getRandomMorph(this.state.morphArray);
-  };
+      blockActive: true
+    })
+  }
 
-  // answerMessage = () => {
-  //     // if user output == answer -> display correct message, else display incorrect
-  //     console.log('write this function later');
-  // }
+componentDidUpdate(prevState){
+
+  if (this.state.phraseObj === prevState.phraseObj && this.state.gameRound !== prevState.gameRound){
+    // invoking the randomizer
+    this.randomizer();
+  }
+}
 
   render() {
     return (
@@ -143,26 +112,31 @@ componentDidUpdate(){
             />
 
             <div className="main__top-wrapper">
-            <BackNav />
-            {/* <Timer /> */}
-            <h2 className="main__test-title">60s</h2>
+              <BackNav />
+              {/* <Timer /> */}
+              <h2 className="main__test-title">60s on the clock ⬇️</h2>
             </div>
 
             <EnglishPhrase phrase={this.state.phraseObj.english} />
 
             <section className="game">
-            <img className="game__image" src={dummyImage} alt="" />
-            <div className="game__fall-space">
-                <FallingBlocks 
-                morphsArray={this.state.blockArray}
-                blockVisible={this.state.blockVisible}
-                blockLeft={this.state.blockLeft}
-                />
-            </div>
-            <div className="game__next-list">
-                <NextList ayajuthem={this.state.phraseObj.ayajuthem} 
-                />
-            </div>
+            {/* <div className="game__next-list">
+                  <NextList ayajuthem={this.state.phraseObj.ayajuthem} />
+              </div> */}
+
+              <img className="game__image" src={gameImage} alt="" />
+
+              <div className="game__fall-space">
+                  <FallingBlocks 
+                  morphsArray={this.state.blockArray}
+                  blockVisible={this.state.blockVisible}
+                  blockLeft={this.state.blockLeft}
+                  activateBlock={this.makeBlockActive}
+                  blockActiveState={this.state.blockActive}
+                  />
+              </div>
+              <div className="game__animation">Finish before I hit the bottom!</div>
+             
             </section>
 
             <div className="game__output">

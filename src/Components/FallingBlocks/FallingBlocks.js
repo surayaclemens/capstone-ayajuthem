@@ -2,7 +2,7 @@ import './FallingBlocks.scss';
 import React from 'react';
 // import ArrowKeysReact from 'arrow-keys-react/lib/ArrowKeysReact';
 
-function FallingBlocks ({morphsArray, blockVisible, blockLeft}) {
+function FallingBlocks ({morphsArray, blockVisible, blockLeft, blockActive, activateBlock}) {
 
     // ArrowKeysReact.config({
     //     left: () => {
@@ -21,15 +21,34 @@ function FallingBlocks ({morphsArray, blockVisible, blockLeft}) {
     //   });
 
   const blockVisClass = blockVisible ? "blocks__single blocks__single--current" : "blocks__single--hidden"
-
   
-  //  if currentBlock that is stored in state's index is the same index as the one in the mapped divs below, make it visible and tab index 1
-
-
   let shuffledMorphsArray = morphsArray
-      .map(value => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value)
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+
+  const arrowKeyMove = (e) => {
+    e.preventDefault()
+    if (e.keyCode === '38') {
+      console.log("key up listening")
+    }
+    else if (e.keyCode === '40') {
+      console.log("key down listening")
+    }
+    else if (e.keyCode === '37') {
+      
+    }
+    else if (e.keyCode === '39') {
+      console.log("key right listening")
+    }
+
+  }
+  
+  //  if active block that is stored in state's index is the same index as the one in the mapped divs below, make it visible and tab index 1
+// if (blockActive = true) {
+  
+// }
+
 
       return (
           <section className='blocks'>
@@ -38,12 +57,14 @@ function FallingBlocks ({morphsArray, blockVisible, blockLeft}) {
 
                   return(
                           <div style={{
-                              left: blockLeft[index]+"px"
+                            left: blockLeft[index]+"px"
                           }}
-                            // {...ArrowKeysReact.events} 
-                            // tabIndex="1"
+
+                            tabIndex="1"
                             key={index}
                             className={blockVisClass}
+                            onClick={activateBlock}
+                            onKeyDown={arrowKeyMove}
                           >
                             {morph}
                           </div>
@@ -54,10 +75,5 @@ function FallingBlocks ({morphsArray, blockVisible, blockLeft}) {
       )
   }
  
-// create state that tracks which block is active
-// if index of block being mapped is index of current block in state, then display tab index =1 
-// e.key = arrow 
-
-
 export default FallingBlocks;
 

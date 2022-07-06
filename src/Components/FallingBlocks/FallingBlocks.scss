@@ -16,19 +16,22 @@
 
     &__single{
         @include bankBlocks;
-        background-color: $periwinkle;
+        // background-color: $periwinkle;
         position: absolute;
         text-align: center;
         
         &--current{
             display: block;
 
-            // &:nth-child(2){
-            //     display: none;
-            // }
-            // &:nth-child(3){
-            //     display: none;
-            // } 
+            &:nth-child(1){
+                background-color: $pale-orange-2;
+            }
+            &:nth-child(2){
+                background-color: $pale-pink;
+            }
+            &:nth-child(3){
+                background-color: $hot-red;
+            }
         
         }
         

@@ -37,7 +37,7 @@
         white-space: nowrap;
         margin: 0 auto; /* Gives that scrolling effect as the typing happens */
         letter-spacing: .15em; /* Adjust as needed */
-        animation: typing 5s steps(40, end) forwards;
+        animation: typing 4s steps(40, end) forwards;
         
         
     // separate each line of text into different modifier class, set timeout to add class staggered so each line gets typed separately
@@ -47,24 +47,24 @@
         }
 
         &--second{
-            animation-delay: 4.3s;
+            animation-delay: 3.5s;
 
         }
 
         &--third{
-            animation-delay: 8s;
+            animation-delay: 7.5s;
             
 
         }
 
         &--fourth{
-            animation-delay: 11s;
+            animation-delay: 10.6s;
            
 
         }
 
         &--fifth{
-            animation-delay: 16s;
+            animation-delay: 13.6s;
            
 
         }

@@ -2,6 +2,7 @@
 @use '../../Styles/Partials/global' as *;
 @use '../../Styles/Partials/mixins' as *;
 @use '../../Styles/Partials/variables' as *;
+@use '../../Styles/Partials/animations' as *;
 
 .main{
     background-color: $dark-blue;
@@ -25,7 +26,7 @@
         @include tablet {
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 10rem 0 10rem;
+            padding: 1.5rem 6rem 0 6rem;
         }
     }
 
@@ -41,21 +42,40 @@
     flex-direction: row;
     justify-content: center;
     @include tablet {
-        padding: 1rem 10rem 0 10rem;
+        padding: 2rem 8rem 0 6rem;
         justify-content: space-between;
         align-items: center;
 
     }
   
     
+    &__animation{
+        align-self: flex-start;
+        background-color:$periwinkle;
+        color: white;
+        // border: 1.5px solid white;
+        height: 2rem;
+        width: 12rem;
+        padding: .5rem 0;
+        font-size: 1.2rem;
+        font-weight: 400;
+        border-radius: 5px;
+        font-family: 'Aldrich';
+        box-shadow: 1px 2px 8px 2px #FDF455;
+        margin: 0;
+        animation: blockDrop 60s linear infinite;
+
+        // border: 1px solid yellow;
+          
+    }
 
     &__image{
         // border: 1px solid blue;
-        width: 10rem;
         height: auto;
         display: none;
         @include tablet {
             display: flex;
+            width: 14rem;
         }
     }
 

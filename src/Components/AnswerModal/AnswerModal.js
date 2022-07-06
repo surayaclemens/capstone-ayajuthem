@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import closeIcon from '../../Assets/closeGreen.svg';
 
 
-function AnswerModal( { hideModal, correctAnswer, showAnswerModal, answerMessage, handleNext }) {
+function AnswerModal( { hideModal, correctAnswer, showAnswerModal, handleNext }) {
     const modalDisplayClass = showAnswerModal ? "answer-modal answer-modal--show" : "answer modal answer-modal--hide"
 
     
