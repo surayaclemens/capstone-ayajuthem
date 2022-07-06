@@ -25,7 +25,7 @@
 
 
 🧑🏽‍💻 DEV INSTALLATION INSTRUCTIONS
-    -npm install arrow-keys-react
+    -npm install express, axios, sass
     -
 
 💾 TECH STACK
@@ -38,11 +38,15 @@
     -SQL/MySQL Workbench
 
 💪🏽 LESSONS LEARNED 
-    Huge respect to game developers! Making an interactive game like this with so many moving parts and state changes was a big challenge as a junior dev, and it taught me a lot. Biggest takeaways:
+    Huge respect to game developers! Making an interactive game like this with so many moving parts and state changes was a big challenge as a junior dev, and it taught me a lot. 
+    Biggest takeaways:
         -simplify state as much as possible
-        -store what you'll need in componentDidMount
         -be mindful of the time certain functions take, sometimes better to just run the steps rather than wrap them in a function
-        -setTimeouts don't buy you time for state to fill, they just delay your reading of undefined
+    Technical skills:
+        -how to deploy front & back end
+        -how to build a database
+        -how to use keypress listeners
+        -how to randomize data being pulled in
 
 🚀 NEXT STEPS & BIG DREAMS
     -Deploy on headless CMS for community use
