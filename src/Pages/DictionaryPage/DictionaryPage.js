@@ -1,5 +1,7 @@
 import './DictionaryPage.scss';
-import React from 'react';
+import React from "react";
+
+import phrasesAPI from "../../utils/apiConfig";
 
 class DictionaryPage extends React.Component {
     state = {
@@ -18,11 +20,13 @@ class DictionaryPage extends React.Component {
         .then((response) => {
             // get all the phrases from API 
             const allPhrases = response.data;
-    
+            
             //Put all the phrases in current state
             this.setState({
             phrasesArray: allPhrases,
             });
+
+            console.log(this.state.phrasesArray)
         })
   
         .catch((error) => console.error(error));
@@ -34,7 +38,7 @@ class DictionaryPage extends React.Component {
                 <h2 className='phrase-list__header'>Phrases</h2>
                     <div className='phrase-list__list-wrapper'>
                             {/* map through split morpheme array and for each morpheme, return a div with single morph */}
-                            {allPhrases?.map((phrase, id) => {
+                            {this.state.phrasesArray?.map((phrase, id) => {
                                 return(
                                     <div 
                                     key={id}

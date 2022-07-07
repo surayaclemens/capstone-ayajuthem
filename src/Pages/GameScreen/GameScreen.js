@@ -7,7 +7,8 @@ import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
 // import NextList from "../../Components/NextList/NextList";
 import Output from "../../Components/Output/Output";
-import gameImage from "../../Assets/orb.png";
+import gameImage3 from "../../Assets/purpleorb.png";
+
 import phrasesAPI from "../../utils/apiConfig";
 
 class GameScreen extends React.Component {
@@ -250,7 +251,7 @@ componentDidUpdate(prevState){
 
             <div className="main__top-wrapper">
               <BackNav />
-              <h2 className="main__test-title">60s on the clock⏱</h2>
+              <h2 className="main__test-title">60s on the clock👇🏾</h2>
             </div>
 
             <EnglishPhrase phrase={this.state.phraseObj.english} />
@@ -259,8 +260,15 @@ componentDidUpdate(prevState){
             {/* <div className="game__next-list">
                   <NextList ayajuthem={this.state.phraseObj.ayajuthem} />
               </div> */}
-
-              <img className="game__image" src={gameImage} alt="" />
+            <div className="game__image-wrapper">
+              <div className="game__image-top">
+                <img className="game__image" src={gameImage3} alt="" />
+              </div>
+              <div className="game__image-bottom">
+                <img className="game__image" src={gameImage3} alt="" />
+                <img className="game__image" src={gameImage3} alt="" />
+              </div>
+            </div>
 
               <div className="game__fall-space">
                   <FallingBlocks 

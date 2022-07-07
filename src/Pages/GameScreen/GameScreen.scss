@@ -57,7 +57,7 @@
         height: 2rem;
         width: 12rem;
         padding: .5rem 0;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 400;
         border-radius: 5px;
         font-family: 'Aldrich';
@@ -68,16 +68,38 @@
         // border: 1px solid yellow;
           
     }
+    &image__wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
+    }
+    &__image-top{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10rem;
+    }
+
+    &__image-bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 10rem;
+        
+    }
+    
     &__image{
         // border: 1px solid blue;
         height: auto;
         display: none;
         @include tablet {
             display: flex;
-            width: 14rem;
+            width: 4rem;
             opacity: 100%;
         }
+        animation: spin 6s linear infinite;
 
     }
 
