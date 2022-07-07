@@ -2,11 +2,10 @@ import "./GameScreen.scss";
 import React from "react";
 import Button from "../../Components/Button/Button";
 import BackNav from "../../Components/BackNav/BackNav";
-// import Timer from '../../Components/Timer/Timer';
 import AnswerModal from "../../Components/AnswerModal/AnswerModal";
 import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
-import NextList from "../../Components/NextList/NextList";
+// import NextList from "../../Components/NextList/NextList";
 import Output from "../../Components/Output/Output";
 import gameImage from "../../Assets/tet.png";
 import phrasesAPI from "../../utils/apiConfig";
@@ -16,10 +15,10 @@ class GameScreen extends React.Component {
     phraseObj: "",
     phrasesArray: [],
     blockVisible: true,
-    blockArray: [],
+    shuffledMorphsArray: [],
     showAnswerModal: false,
     blockLeft: [0, 140, 280],
-    blockActive: false,
+    blockActiveState: [false, false, false],
     gameRound: 0
 
   };
@@ -48,15 +47,19 @@ class GameScreen extends React.Component {
       .catch((error) => console.error(error));
   }
 
-  // Function to randomize all phrases to put single into phraseObj
+  // Function to randomize all phrases and morphemes
   randomizer = () => {
     let randomIndex = Math.floor(Math.random() * this.state.phrasesArray.length);
     let singlePhrase = this.state.phrasesArray[randomIndex];
     // split the single phrase to have its morphs in an array
     let morphArray = singlePhrase.ayajuthem.split(" ");
+    let shuffledMorphsArray = morphArray
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value)
     this.setState({
         phraseObj: singlePhrase,
-        blockArray: morphArray,
+        shuffledMorphsArray: shuffledMorphsArray,
     });
   }
 
@@ -86,11 +89,61 @@ class GameScreen extends React.Component {
     });
   };
   // Function to set the active block (on click)
-  makeBlockActive = () => {
+  makeBlockActive = (index) => {
+    let booleanArray = [false, false, false]
+    booleanArray[index] = true
     this.setState({
-      blockActive: true
+      blockActiveState: booleanArray
     })
   }
+
+ moveLeft = (index) => {
+  let movement = -40
+  if (index === 0){
+    let newPosition = this.state.blockLeft
+    newPosition[0] = newPosition[0] + movement
+    this.setState({
+      blockLeft: newPosition
+    })
+  }
+  if (index === 1){
+    let newPosition = this.state.blockLeft
+    newPosition[1] = newPosition[1] + movement
+    this.setState({
+      blockLeft: newPosition
+    })
+  }
+  if (index === 2){
+    let newPosition = this.state.blockLeft
+    newPosition[2] = newPosition[2] + movement
+    this.setState({
+      blockLeft: newPosition
+    })
+  }
+}
+
+arrowKeyMove = (e, index) => {
+  e.preventDefault()
+  console.log(e.keyCode)
+ 
+  if (e.keyCode === 38) {
+    console.log("up key listening")
+  }
+  else if (e.keyCode === 40) {
+    console.log("key down listening")
+  }
+  else if (e.keyCode === 37) {
+    // which block is true, that's the one to focus, change that value to X px less
+    if (this.blockActiveState = true){
+      this.moveLeft(index)
+    } 
+    console.log("left key LISTENING")
+
+  }
+  else if (e.keyCode === 39) {
+    console.log("key right listening")
+  }
+}
 
 componentDidUpdate(prevState){
 
@@ -128,11 +181,14 @@ componentDidUpdate(prevState){
 
               <div className="game__fall-space">
                   <FallingBlocks 
-                  morphsArray={this.state.blockArray}
+                  shuffledMorphsArray={this.state.shuffledMorphsArray}
                   blockVisible={this.state.blockVisible}
                   blockLeft={this.state.blockLeft}
-                  activateBlock={this.makeBlockActive}
-                  blockActiveState={this.state.blockActive}
+                  makeBlockActive={this.makeBlockActive}
+                  blockActiveState={this.state.blockActiveState}
+                  moveLeft={this.moveLeft}
+                  booleanArray={this.state.booleanArray}
+                  arrowKeyMove={this.arrowKeyMove}
                   />
               </div>
               <div className="game__animation">Finish before I hit the bottom!</div>

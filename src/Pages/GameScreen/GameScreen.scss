@@ -61,7 +61,7 @@
         font-weight: 400;
         border-radius: 5px;
         font-family: 'Aldrich';
-        box-shadow: 1px 2px 8px 2px #FDF455;
+        box-shadow: 1px 2px 8px 2px #ffffff;
         margin: 0;
         animation: blockDrop 60s linear infinite;
 
@@ -76,7 +76,9 @@
         @include tablet {
             display: flex;
             width: 14rem;
+            opacity: 100%;
         }
+
     }
 
     &__fall-space{

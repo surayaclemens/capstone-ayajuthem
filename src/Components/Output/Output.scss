@@ -16,6 +16,10 @@
         border-radius: 5px;
         height: 3.5rem;
         width: 90%;
+        color: $dark-blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         @include tablet {
             width: 30rem;
