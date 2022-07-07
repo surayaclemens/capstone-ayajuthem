@@ -4,7 +4,6 @@
 @use '../../Styles/Partials/variables' as *;
 
 .blocks{
-    // border: 1px solid white;
     height: 100%;
     display: flex;
     align-items: flex-start;
@@ -16,7 +15,6 @@
 
     &__single{
         @include bankBlocks;
-        // background-color: $periwinkle;
         position: absolute;
         text-align: center;
         

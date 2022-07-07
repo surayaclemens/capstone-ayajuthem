@@ -5,7 +5,6 @@
 
 
 .answer-modal{
-    // border: 2px solid limegreen;
     height: 100%;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.437);
@@ -17,7 +16,6 @@
     
     &__content{
         position: relative;
-        // top: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -38,8 +36,7 @@
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
-        
-    
+   
     }
 
     &__close-icon{
@@ -66,9 +63,6 @@
         font-size: 1.5rem;
         font-weight: 600;
         font-family: Arial, Helvetica, sans-serif;
-    
-    }
-    &__message{
     
     }
 }

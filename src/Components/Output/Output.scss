@@ -4,13 +4,11 @@
 @use '../../Styles/Partials/variables' as *;
 
 .output{
-    // border: 1px dotted yellow;
     width: 100%;
     display: flex;
     justify-content: center;
 
     &__field{
-        // border: 2px solid skyblue;
         background-color: white;
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 5px;

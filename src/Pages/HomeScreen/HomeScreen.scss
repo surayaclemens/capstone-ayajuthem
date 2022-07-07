@@ -26,8 +26,6 @@
         justify-content: center;
         border-radius: 5px;
         box-shadow: 5px 5px 6px 4px rgba(255, 204, 0, 0.617);
-
-        
     }
     
     &__instruction-text{
@@ -44,29 +42,24 @@
   
         &--second{
             animation-delay: 3.5s;
-
         }
 
         &--third{
             animation-delay: 7.5s;    
-
         }
 
         &--fourth{
-            animation-delay: 10.6s;
-           
+            animation-delay: 10.6s;       
         }
 
         &--fifth{
-            animation-delay: 13.5s;
-         
+            animation-delay: 13.5s; 
         }
     }
 
     &__button-wrapper{
             animation: buttonBounce 3.5s linear infinite;
             animation-delay: 15.8s;
-        }
-    
+        }   
 
 }

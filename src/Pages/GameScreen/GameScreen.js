@@ -5,7 +5,6 @@ import BackNav from "../../Components/BackNav/BackNav";
 import AnswerModal from "../../Components/AnswerModal/AnswerModal";
 import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
-// import NextList from "../../Components/NextList/NextList";
 import Output from "../../Components/Output/Output";
 import gameImage3 from "../../Assets/purpleorb.png";
 
@@ -72,7 +71,6 @@ class GameScreen extends React.Component {
       gameRound: this.state.gameRound++,
       blockLeft: [0, 140, 280],
       blockTop: [0, 0, 0],
-
     })
   }
   // Function to show blocks
@@ -81,18 +79,18 @@ class GameScreen extends React.Component {
         blockVisible: true
       })
   }
-// Function to show check modal
+// Function to show answer modal
   showModal = () => {
     this.setState({
       showAnswerModal: true,
-    });
-  };
-  // Function to hide check modal
+    })
+  }
+  // Function to hide answer modal
   hideModal = () => {
     this.setState({
       showAnswerModal: false,
-    });
-  };
+    })
+  }
   // Function to set the active block (on click)
   makeBlockActive = (index) => {
     let booleanArray = [false, false, false]
@@ -101,6 +99,7 @@ class GameScreen extends React.Component {
       blockActiveState: booleanArray
     })
   }
+
 // MOVEMENT FUNCTIONS
 // Move left
  moveLeft = (index) => {
@@ -203,7 +202,6 @@ moveDown = (index) => {
   }
 }
 
-
 // ARROW KEY LISTENERS
 arrowKeyMove = (e, index) => {
   e.preventDefault()
@@ -257,19 +255,15 @@ componentDidUpdate(prevState){
             <EnglishPhrase phrase={this.state.phraseObj.english} />
 
             <section className="game">
-            {/* <div className="game__next-list">
-                  <NextList ayajuthem={this.state.phraseObj.ayajuthem} />
-              </div> */}
-            <div className="game__image-wrapper">
-              <div className="game__image-top">
-                <img className="game__image" src={gameImage3} alt="" />
+              <div className="game__image-wrapper">
+                  <div className="game__image-top">
+                    <img className="game__image" src={gameImage3} alt="" />
+                  </div>
+                  <div className="game__image-bottom">
+                    <img className="game__image" src={gameImage3} alt="" />
+                    <img className="game__image" src={gameImage3} alt="" />
+                  </div>
               </div>
-              <div className="game__image-bottom">
-                <img className="game__image" src={gameImage3} alt="" />
-                <img className="game__image" src={gameImage3} alt="" />
-              </div>
-            </div>
-
               <div className="game__fall-space">
                   <FallingBlocks 
                   shuffledMorphsArray={this.state.shuffledMorphsArray}
@@ -284,7 +278,6 @@ componentDidUpdate(prevState){
                   />
               </div>
               <div className="game__animation">Finish before I hit the bottom!</div>
-             
             </section>
 
             <div className="game__output">

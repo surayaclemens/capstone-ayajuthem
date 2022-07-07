@@ -8,7 +8,6 @@ import DictionaryPage from './Pages/DictionaryPage/DictionaryPage';
 
 class App extends Component {
 
-  
   render() {
     return (
       <div className="App">

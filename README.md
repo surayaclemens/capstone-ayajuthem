@@ -26,7 +26,6 @@
 
 🧑🏽‍💻 DEV INSTALLATION INSTRUCTIONS
     -npm install express, axios, sass
-    -
 
 💾 TECH STACK
     -HTML5

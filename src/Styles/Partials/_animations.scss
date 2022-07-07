@@ -58,7 +58,6 @@
     to { width: 100% }
   }
 
-  // smooth fall from initial position to land in output bar
   @keyframes blockDrop {
     0% {
       transform: translate(0px, 0px);
