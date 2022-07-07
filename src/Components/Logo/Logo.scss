@@ -2,7 +2,8 @@
 
 .logo{
     &__image{
-        width: 28rem;
+        width: 34rem;
+        margin-bottom: 0;
     }
     &:hover{
         animation: logoBob 3s linear infinite;

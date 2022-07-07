@@ -7,7 +7,7 @@ import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
 // import NextList from "../../Components/NextList/NextList";
 import Output from "../../Components/Output/Output";
-import gameImage from "../../Assets/tet.png";
+import gameImage from "../../Assets/orb.png";
 import phrasesAPI from "../../utils/apiConfig";
 
 class GameScreen extends React.Component {
@@ -18,6 +18,7 @@ class GameScreen extends React.Component {
     shuffledMorphsArray: [],
     showAnswerModal: false,
     blockLeft: [0, 140, 280],
+    blockTop: [0, 0, 0],
     blockActiveState: [false, false, false],
     gameRound: 0
 
@@ -67,7 +68,10 @@ class GameScreen extends React.Component {
   handleNext = () => {
     this.randomizer();
     this.setState({
-      gameRound: this.state.gameRound++
+      gameRound: this.state.gameRound++,
+      blockLeft: [0, 140, 280],
+      blockTop: [0, 0, 0],
+
     })
   }
   // Function to show blocks
@@ -96,9 +100,10 @@ class GameScreen extends React.Component {
       blockActiveState: booleanArray
     })
   }
-
+// MOVEMENT FUNCTIONS
+// Move left
  moveLeft = (index) => {
-  let movement = -40
+  let movement = -10
   if (index === 0){
     let newPosition = this.state.blockLeft
     newPosition[0] = newPosition[0] + movement
@@ -121,27 +126,106 @@ class GameScreen extends React.Component {
     })
   }
 }
+// Move right
+moveRight = (index) => {
+  let movement = 10
+  if (index === 0){
+    let newPosition = this.state.blockLeft
+    newPosition[0] = newPosition[0] + movement
+    this.setState({
+      blockLeft: newPosition
+    })
+  }
+  if (index === 1){
+    let newPosition = this.state.blockLeft
+    newPosition[1] = newPosition[1] + movement
+    this.setState({
+      blockLeft: newPosition
+    })
+  }
+  if (index === 2){
+    let newPosition = this.state.blockLeft
+    newPosition[2] = newPosition[2] + movement
+    this.setState({
+      blockLeft: newPosition
+    })
+  }
+}
+// Move up
+moveUp = (index) => {
+  let movement = -10
+  if (index === 0){
+    let newPosition = this.state.blockTop
+    newPosition[0] = newPosition[0] + movement
+    this.setState({
+      blockTop: newPosition
+    })
+  }
+  if (index === 1){
+    let newPosition = this.state.blockTop
+    newPosition[1] = newPosition[1] + movement
+    this.setState({
+      blockTop: newPosition
+    })
+  }
+  if (index === 2){
+    let newPosition = this.state.blockTop
+    newPosition[2] = newPosition[2] + movement
+    this.setState({
+      blockTop: newPosition
+    })
+  }
+}
+// Move down
+moveDown = (index) => {
+  let movement = 10
+  if (index === 0){
+    let newPosition = this.state.blockTop
+    newPosition[0] = newPosition[0] + movement
+    this.setState({
+      blockTop: newPosition
+    })
+  }
+  if (index === 1){
+    let newPosition = this.state.blockTop
+    newPosition[1] = newPosition[1] + movement
+    this.setState({
+      blockTop: newPosition
+    })
+  }
+  if (index === 2){
+    let newPosition = this.state.blockTop
+    newPosition[2] = newPosition[2] + movement
+    this.setState({
+      blockTop: newPosition
+    })
+  }
+}
 
+
+// ARROW KEY LISTENERS
 arrowKeyMove = (e, index) => {
   e.preventDefault()
-  console.log(e.keyCode)
  
   if (e.keyCode === 38) {
-    console.log("up key listening")
+    if (this.blockActiveState = true){
+      this.moveUp(index)
+    }
   }
   else if (e.keyCode === 40) {
-    console.log("key down listening")
+    if (this.blockActiveState = true){
+      this.moveDown(index)
+    }
   }
   else if (e.keyCode === 37) {
-    // which block is true, that's the one to focus, change that value to X px less
     if (this.blockActiveState = true){
       this.moveLeft(index)
-    } 
-    console.log("left key LISTENING")
-
+    }
   }
   else if (e.keyCode === 39) {
-    console.log("key right listening")
+    if (this.blockActiveState = true){
+      this.moveRight(index)
+    }
   }
 }
 
@@ -166,8 +250,7 @@ componentDidUpdate(prevState){
 
             <div className="main__top-wrapper">
               <BackNav />
-              {/* <Timer /> */}
-              <h2 className="main__test-title">60s on the clock ⬇️</h2>
+              <h2 className="main__test-title">60s on the clock⏱</h2>
             </div>
 
             <EnglishPhrase phrase={this.state.phraseObj.english} />
@@ -184,6 +267,7 @@ componentDidUpdate(prevState){
                   shuffledMorphsArray={this.state.shuffledMorphsArray}
                   blockVisible={this.state.blockVisible}
                   blockLeft={this.state.blockLeft}
+                  blockTop={this.state.blockTop}
                   makeBlockActive={this.makeBlockActive}
                   blockActiveState={this.state.blockActiveState}
                   moveLeft={this.moveLeft}

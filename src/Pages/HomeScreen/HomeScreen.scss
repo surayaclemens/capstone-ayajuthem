@@ -15,16 +15,19 @@
     font-family: 'Aldrich';
     
     &__instruction-block{
-        background-color: $pale-orange-3;
+        background-color: #ff986c;
         padding: 1rem 0;
         height: 11rem;
         width: 48rem;
+        margin-top: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 5px;
-        box-shadow: 4px 4px rgb(255, 208, 0);
+        box-shadow: 5px 5px 6px 4px rgba(255, 204, 0, 0.617);
+
+        
     }
     
     &__instruction-text{
@@ -33,46 +36,36 @@
         line-height: 2rem;
         padding: 0;
         width: 0;
-        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        overflow: hidden; 
         white-space: nowrap;
-        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-        letter-spacing: .15em; /* Adjust as needed */
+        margin: 0 auto;
+        letter-spacing: .15em;
         animation: typing 4s steps(40, end) forwards;
-        
-        
-    // separate each line of text into different modifier class, set timeout to add class staggered so each line gets typed separately
-
-        &--first{
-
-        }
-
+  
         &--second{
             animation-delay: 3.5s;
 
         }
 
         &--third{
-            animation-delay: 7.5s;
-            
+            animation-delay: 7.5s;    
 
         }
 
         &--fourth{
             animation-delay: 10.6s;
            
-
         }
 
         &--fifth{
-            animation-delay: 13.6s;
-           
-
+            animation-delay: 13.5s;
+         
         }
     }
 
     &__button-wrapper{
             animation: buttonBounce 3.5s linear infinite;
-            animation-delay: 18.2s;
+            animation-delay: 15.8s;
         }
     
 

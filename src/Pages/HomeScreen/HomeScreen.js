@@ -20,7 +20,7 @@ class HomeScreen extends React.Component{
 
                     <p className='home__instruction-text home__instruction-text--second'>to match the English target phrase</p>
 
-                    <p className='home__instruction-text home__instruction-text--third'>Use arrow keys ➡️ ⬇️ ⬅️ to move</p>
+                    <p className='home__instruction-text home__instruction-text--third'>Use arrow keys ⬆️➡️⬇️⬅️ to move</p>
 
                     <p className='home__instruction-text home__instruction-text--fourth'>each block into place</p>
 
