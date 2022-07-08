@@ -10,7 +10,7 @@ class DictionaryPage extends React.Component {
     };
   
     // INITIAL MOUNT
-    dataURL = "http://localhost:5050/phrases";
+    
   
     componentDidMount() {
   

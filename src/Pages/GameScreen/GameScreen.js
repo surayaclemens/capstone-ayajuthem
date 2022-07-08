@@ -7,7 +7,6 @@ import EnglishPhrase from "../../Components/EnglishPhrase/EnglishPhrase";
 import FallingBlocks from "../../Components/FallingBlocks/FallingBlocks";
 import Output from "../../Components/Output/Output";
 import gameImage3 from "../../Assets/purpleorb.png";
-
 import phrasesAPI from "../../utils/apiConfig";
 
 class GameScreen extends React.Component {
@@ -25,7 +24,6 @@ class GameScreen extends React.Component {
   };
 
   // INITIAL MOUNT
-  dataURL = "http://localhost:5050/phrases";
 
   componentDidMount() {
 
