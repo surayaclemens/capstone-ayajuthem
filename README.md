@@ -35,6 +35,7 @@
     -React
     -Express
     -SQL/MySQL Workbench
+    -Heroku
 
 💪🏽 LESSONS LEARNED 
     Huge respect to game developers! Making an interactive game like this with so many moving parts and state changes was a big challenge as a junior dev, and it taught me a lot. 
