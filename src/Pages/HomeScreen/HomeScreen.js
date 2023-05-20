@@ -15,7 +15,7 @@ class HomeScreen extends React.Component{
                 <section className='home__instruction-block'>
                     <p className='home__instruction-text home__instruction-text--first'>Arrange the Ayajuthem word blocks </p>
                     <p className='home__instruction-text home__instruction-text--second'>to match the English target phrase</p>
-                    <p className='home__instruction-text home__instruction-text--third'>Use arrow keys ⬆️➡️⬇️⬅️ to move</p>
+                    <p className='home__instruction-text home__instruction-text--third'>Click + use arrow keys ⬆️➡️⬇️⬅️ to move</p>
                     <p className='home__instruction-text home__instruction-text--fourth'>each block into place</p>
                     <p className='home__instruction-text home__instruction-text--fifth'>Beat the clock!</p>
                     

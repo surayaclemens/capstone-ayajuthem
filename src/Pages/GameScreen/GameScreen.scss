@@ -139,6 +139,7 @@
 }
 
 .button--plain{
-    border: 1px solid white;
-    box-shadow: none;
+    // border: 1px solid white;
+    // box-shadow: none;
+    @include buttonStyles;
 }

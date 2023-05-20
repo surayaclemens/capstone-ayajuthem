@@ -6,12 +6,13 @@
 .english-phrase{
     font-size: 1.4rem;
     margin: 0;
-    padding: 1rem;
+    background-image: linear-gradient($pale-orange, $pale-orange-2, $pale-orange-3);
     @include tablet{
         padding: 0;
     }
 
     &__text{
         margin: 0;
+        padding: 1rem;
     }
 }
