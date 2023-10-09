@@ -1,39 +1,45 @@
 👋🏽 PROJECT INTRO
--ʔayʔaǰuθəm Tetris is an accessible way to practice the basics of Ayajuthem morphosyntax, AKA the way small units of language fit together to make meaningful words and sentences. Inspired by the nostalgic fun of Tetris, the effective teaching style of Duolingo, the UN’s decade of Indigenous Languages, and of course the Ayajuthem-speaking community for whom it is built and to whom it belongs 🧡
+<br>ʔayʔaǰuθəm Tetris is an accessible way to practice the basics of Ayajuthem morphosyntax, AKA the way small units of language fit together to make meaningful words and sentences. Inspired by the nostalgic fun of Tetris, the effective teaching style of Duolingo, the UN’s decade of Indigenous Languages, and of course the Ayajuthem-speaking community for whom it is built and to whom it belongs 🧡
+<br>I created this app as my capstone project in the final 2 weeks of my 12-week web development bootcamp
 
 🎯 PROBLEM SPACE
--Language is culture, identity, health, power, and revitalization one of the cornerstones of decolonization. The boom of tech has made picking up up a new language easier than ever with popular apps such as Duolingo and Anki offering dozens of options for gamified learning, but still lacking in the space are tools for Indigenous languages and learners; most have to rely on organized classes which are few and far between. This leaves little opportunity for practice and advancement, particularly in communities where classes are not available. Adding to the challenge, Ayajuthem has complex morphological patterns that can be difficult to master as an English speaker, and it has been shared by community members that an engaging way to practice these patterns would benefit their learning experience -- ʔayʔaǰuθəm Tetris seeks to fill this want.
+<br>Language is culture, identity, health, power. Revitalization one of the cornerstones of decolonization.
+<br>Picking up a language is now easier than ever with popular apps such as Duolingo offering dozens of options for gamified learning.
+<br>But for minority heritage and Indigenous languages, digital resources can still be hard to come by. In communities where live classes are not available, learners have little opportunity for practice and advancement
+<br>Community members have shared with me that they would benefit from an engaging way to practice vocabulary and sentence patterns on their own time - ʔayʔaǰuθəm Tetris seeks to fill this want.
 
 📲 PRODUCT FEATURES
--Interactive animations
--Randomly generated target English phrase
--Shuffled order of play blocks that creates the learning experience
--Arrow key listeners for users to move blocks to desired position
--Modal to check answer and prompt user to continue to next example or exit
-
-
-🧑🏽‍💻 DEV INSTALLATION INSTRUCTIONS
--Clone the repo
--NPM install necessary packages
+<br>-Interactive animations
+<br>-Randomly generated target English phrase
+<br>-Shuffled order of play blocks that creates the learning experience
+<br>-Arrow key listeners for users to move blocks to desired position
+<br>-Modal to check answer and prompt user to continue to next example or exit
 
 💾 STACK
--HTML5
--CSS
--SASS
--Node.js
--React
--Express
--SQL/MySQL Workbench
--Heroku
+<br>-React
+<br>-JavaScript
+<br>-HTML5
+<br>-CSS
+<br>-SASS
+<br>-Node.js
+<br>-Express
+<br>-Knex
+<br>-SQL/MySQL Workbench
+<br>-Heroku
 
 💪🏽 LESSONS LEARNED 
--Huge respect to game developers! Making an interactive game like this with so many moving parts and state changes was a big challenge as a junior dev, and it taught me a lot. Through this project I learned how to build my first database and connect it to a web app, how to deploy on both front and back end, how to use React hooks to manage state, and how to let users move page elements with keypress listeners, among many other things.
+<br>Huge respect to game developers! Making an interactive game like this with so many moving parts and state changes was a big challenge as a junior dev, and it taught me a lot.
+<br>To complete this project I learned: 
+<br>-State management with React hooks
+<br>-Building a database with SQL
+<br>-Deploying front and back end production environments with Heroku & GitHub
+<br>-How to use keypress listeners to let users move page elements in real time
 
 🚀 NEXT STEPS & BIG DREAMS
-    -Deploy for community use
-    -Add more data examples to increase play/learning opportunity
-    -Create ability to change timer length
-    -Add login functionality
-    -Allow users to post their own example sentences
-    -Add image to each example for visual aid
+<br>-Deploy for community use
+<br>-Add a LOT more language data so learners have access to a big library of material
+<br>-Add user auth and profiles where learners can track their progress
+<br>-Add images to each example for visual aids
+<br>-Add a dictionary page with English-Target Language vocabulary (in progress)
+<br>-Polish UI (in progress)
 
